@@ -1,0 +1,13 @@
+.review{
+  background-image: url("https://images.unsplash.com/photo-1541268993025-e174f747e749?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1a1b8a186beb85b4e2199fe58741a8f8&auto=format&fit=crop&w=800&q=60");
+  background-size: cover;
+  background:linear-gradient(60deg, #eee, #db286d);
+}
+.reviewbutton{
+  text-align: center;
+  background:linear-gradient(60deg, #eee, #db286d);
+}
+
+button.RegularButton-button-189.ExploreButton{
+  margin-right: 20px;
+}
