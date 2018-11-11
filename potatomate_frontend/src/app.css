@@ -11,3 +11,20 @@
 button.RegularButton-button-189.ExploreButton{
   margin-right: 20px;
 }
+#root > div > div:nth-child(2) > div > div > div > div > div > div > div > div.fileinput.text-center > div.thumbnail{
+  width: 180px;
+  height:135px;
+}
+
+#root > div > div:nth-child(2) > div > div > div > div > div > div > div > div.MuiGrid-container-442.GridContainer-grid-441 > div:nth-child(1) > div > div{
+  padding:0;
+}
+
+/* #morphingCards > div > div.MuiGrid-container-454.GridContainer-grid-453 > div:nth-child(1) > div > div > div.SectionCards-front-705{
+  height: 300px;
+  width: 300px;
+}
+#morphingCards > div > div.MuiGrid-container-454.GridContainer-grid-453 > div:nth-child(1) > div > div > div.SectionCards-back-706.SectionCards-wrapperBackground-707{
+  height: 300px;
+  width: 300px;
+} */

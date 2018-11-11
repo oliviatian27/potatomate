@@ -1,6 +1,7 @@
 #folder
 potatomate_frontend/src/views/
-
+potatomate_frontend/src/components/
+potatomate_frontend/src/assets/
 # misc
 .DS_Store
 .env.local

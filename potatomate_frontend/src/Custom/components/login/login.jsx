@@ -98,7 +98,7 @@ class ExampleLogin extends React.Component {
 
                 <CardBody className={classes.cardLoginBody}>
                   <CustomInput
-                    id="login-modal-first"
+                    
 
                     formControlProps={{
                       fullWidth: true
@@ -130,7 +130,8 @@ class ExampleLogin extends React.Component {
                       placeholder: "Password...",
                       name:"password",
                       value:this.state.password,
-                      onChange:this.handleChange
+                      onChange:this.handleChange,
+                      type:"password"
                     }}
                   />
                 </CardBody>

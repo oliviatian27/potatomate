@@ -3,4 +3,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :reviews
   has_many :conversations
   has_many :messages
+  has_many :followings
+  has_many :followers
+  has_many :tweets
 end

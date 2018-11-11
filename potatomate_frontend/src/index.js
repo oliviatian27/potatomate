@@ -9,6 +9,7 @@ import reducer from './reducers'
 import thunk from 'redux-thunk'
 import {createStore,applyMiddleware,compose} from 'redux'
 import Navbar from 'Custom/shared/navbar'
+import Notifications from 'Custom/shared/notifications'
 import Footer from 'Custom/shared/footer'
 import "assets/scss/material-kit-pro-react.css?v=1.2.0";
 import './app.css'
@@ -24,11 +25,13 @@ ReactDOM.render(
       <Router history={hist}>
         <div>
         <Navbar history={hist}/>
+
         <Switch>
           {indexRoutes.map((prop, key) => {
             return <Route exact path={prop.path} key={key} component={prop.component} />;
           })}
         </Switch>
+        <Notifications />
         <Footer />
       </div>
       </Router>

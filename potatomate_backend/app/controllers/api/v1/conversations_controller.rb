@@ -19,6 +19,10 @@ class Api::V1::ConversationsController < ApplicationController
     end
   end
 
+  def find_conversation
+    @conversations=Conversation.received(params[:id])
+  end
+
 
   private
 

@@ -46,6 +46,7 @@ import {connect} from 'react-redux'
 import ReviewCard from 'Custom/components/profile/reviewcard'
 
 import EditProfile from 'Custom/components/profile/editProfile'
+import FollowUser from 'Custom/components/profile/followUser'
 import Chat from 'Custom/components/profile/Chat'
 import {fetchProfileUser} from 'actions/action'
 
@@ -54,7 +55,6 @@ class ProfilePage extends React.Component {
   componentDidMount() {
 
       this.props.fetchProfileUser(this.props.match.params.id)
-
 
   }
 
@@ -101,9 +101,9 @@ class ProfilePage extends React.Component {
                   </div>
                 </div>
                 <div className={classes.follow}>
-                {canEdit?<EditProfile user={user}/>:null}
+                {canEdit?<EditProfile user={user}/>:<FollowUser />}
 
-                {canEdit?null :<Chat recipient={user} sender={this.props.user.user}/>}
+                {canEdit?null :<Chat recipient={user} recipient_id={this.props.match.params.id} sender={this.props.user.user}/>}
                 </div>
               </GridItem>
             </GridContainer>
@@ -140,7 +140,7 @@ class ProfilePage extends React.Component {
                     )
                   },
                   {
-                    tabButton: "Connections",
+                    tabButton: "Following",
                     tabIcon: People,
                     tabContent: (
                       <div>

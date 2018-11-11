@@ -71,7 +71,7 @@ class ReviewFormModal extends React.Component {
       media_type:this.props.type,
       image:`https://image.tmdb.org/t/p/w500/${this.props.tv_movies.currentItem.backdrop_path}`
     }
-    this.props.submitReview(obj)
+    this.props.submitReview(obj,this.state.share)
     this.setState({content:'',rating:''})
   }
 

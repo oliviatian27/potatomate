@@ -3,31 +3,32 @@ import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'reac
 import { API_ROOT, HEADERS } from 'Custom/data';
 import 'react-chat-widget/lib/styles.css';
 import { ActionCable } from 'react-actioncable-provider';
+import {connect} from 'react-redux'
+import SnackbarContent from "components/Snackbar/SnackbarContent.jsx";
+import Clearfix from "components/Clearfix/Clearfix.jsx";
+import {fetchConversation} from 'actions/action'
 class Chat extends Component {
-  state={
-    conversation_id:'',
-    messageHistory:[]
+  constructor(props){
+    super(props)
+    this.state={
+      conversation_id:'',
+      newMessage:''
+    }
   }
   componentDidMount() {
-    addResponseMessage("Welcome to this awesome chat!");
-
+    addResponseMessage("How are you doing today?");
+    this.props.fetchConversation(this.props.recipient_id)
   }
 
-  componentDidUpdate(prevProps,prevState){
-    if ((!prevProps.recipient||!prevProps.sender) && this.props.recipient.id&&this.props.sender ){
 
-      fetch(`${API_ROOT}/conversations`, {
-        method: 'POST',
-        headers: HEADERS,
-        body: JSON.stringify({title:'first',recipient_id:this.props.recipient.id,sender_id:this.props.sender.id})
-      }).then(res=>res.json())
-      .then(json=>{
-             this.setState({conversation_id:json.id})
-             json.messages.forEach(({user_id,content})=>{
-               user_id===this.props.sender.id?addUserMessage(content):addResponseMessage(content)
-             })
-             })
-        //check do two users have conversations before,if not set firstChat to be true
+
+  componentDidUpdate(prevProps,prevState){
+    if ((!prevProps.user.conversation.messages) && this.props.user.conversation.messages&&this.props.user.user&&this.props.user.user.id ){
+
+      this.props.user.conversation.messages.forEach(({user_id,content})=>{
+        user_id===this.props.user.user.id?addUserMessage(content):addResponseMessage(content)
+      })
+
     }
   }
 
@@ -35,26 +36,61 @@ class Chat extends Component {
       fetch(`${API_ROOT}/messages`, {
         method: 'POST',
         headers: HEADERS,
-        body: JSON.stringify({content:newMessage,user_id:this.props.sender.id,conversation_id:this.state.conversation_id})
+        body: JSON.stringify({content:newMessage,user_id:this.props.sender.id,conversation_id:this.props.user.conversation.id,recipient_id:this.props.recipient_id})
       })
   }
 
 
   render() {
-    console.log(this.props);
     return (
       <div className="App">
 
         <ActionCable
-            key={this.state.conversation_id}
-            channel={{ channel: 'MessagesChannel', conversation: this.state.conversation_id }}
+            key={this.props.user.conversation.id}
+            channel={{ channel: 'MessagesChannel', conversation: this.props.user.conversation.id }}
             onReceived={(res)=>{
-              console.log(res);
+
               if (res.user_id!=this.props.sender.id) {
-                addResponseMessage(res.content)}
+                addResponseMessage(res.content)
+                  this.setState({newMessage:res})  }
               }
             }
           />
+
+          {this.state.newMessage?(<div>
+            <SnackbarContent
+     message={
+         <span>
+           <b>{this.state.newMessage.user.username}says:</b> {this.state.newMessage.content}
+         </span>
+     }
+     close
+     color="success"
+     autoHideDuration="3"
+     icon="info_outline"
+   /> <Clearfix /></div>) :null}
+   {/*
+     this.state.newMessages.map(message=>(<div>
+           <SnackbarContent
+      message={
+        <span>
+          <b>{message.user.username}says:</b> {message.content}
+        </span>
+      }
+      close={
+        ()=>{
+          this.state.newMessages.shift();
+          this.setState({
+            newMessages:this.state.newMessages
+          })
+        }
+      }
+      color="success"
+      autoHideDuration="3"
+      icon="info_outline"
+      /> <Clearfix /></div>) )
+     */ }
+
       <Widget
         handleNewUserMessage={this.handleNewUserMessage}
         profileAvatar={this.props.recipient.avatar}
@@ -67,4 +103,4 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+export default connect(({user})=>({user}),{fetchConversation})(Chat);

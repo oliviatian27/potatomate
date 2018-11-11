@@ -14,7 +14,7 @@ class Api::V1::ReviewsController < ApplicationController
   def get_item_reviews
     @tvmovie=Tvmovie.find_by(tmdbid:params[:tmdbid])
     if @tvmovie
-      @reviews=@tvmovie.reviews
+      @reviews=@tvmovie.reviews.order("created_at DESC")
       render json: @reviews,each_serializer:ReviewSerializer
     else
       render json:[]

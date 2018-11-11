@@ -2,10 +2,15 @@ class User < ApplicationRecord
   has_secure_password
   validates :username, uniqueness: { case_sensitive: false }
 
-  has_many :messages
-  has_many :conversations, foreign_key: :sender_id
-  has_many :reviews
-  has_many :tvmovies,through: :reviews
+    has_many :messages
+    has_many :conversations, foreign_key: :sender_id
+    has_many :reviews
+    has_many :tvmovies,through: :reviews
+    has_many :tweets
+    has_many :follower_follows, foreign_key: :followee_id, class_name: "Follow"
+    has_many :followers, through: :follower_follows, source: :follower
+    has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
+    has_many :followings, through: :followee_follows, source: :followee
 
   def find_common_movie(friend)
     friend.tvmovies.select{|tvmovie|

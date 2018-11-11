@@ -82,18 +82,19 @@ class SectionCards extends React.Component {
     }
   }
   render() {
-    const { classes,friend, ...rest } = this.props;
+    const { friend,classes, ...rest } = this.props;
     return (
 
 
-        <GridItem xs={12} sm={6} md={4} lg={4}>
-          <div className={classes.rotatingCardContainer}>
-            <Card background className={classes.cardRotate}>
+        <GridItem xs={12} sm={6} md={6} lg={4} >
+          <div className={classes.rotatingCardContainer} >
+            <Card background className={classes.cardRotate} >
               <div
-                className={`${classes.front} `}
+              className={classes.front}
                 style={{
                   backgroundImage: `url(${friend.user.avatar})`,
-                  backgroundSize: "cover"
+                  backgroundRepeat: "no-repeat",
+                 backgroundSize: "cover"
 
                 }}
               >
@@ -107,16 +108,14 @@ class SectionCards extends React.Component {
                 }}
               >
                 <CardBody background className={classes.cardBodyRotate}>
-                  <h5 className={classes.cardTitleWhite}>{friend.match}{" "}% Match</h5>
-                  <p className={classes.cardDescriptionWhite}>
+                  <h2 className={classes.cardTitleWhite}>{friend.match}{" "}% Match</h2>
+                  <h3 className={classes.cardDescriptionWhite}>
                     {friend.user.username}
-                  </p>
+                  </h3>
                   <div className={classes.textCenter}>
                    <Button href={`/profile/${friend.user.id}`} type="button" round color="success">Check Profile</Button>
                   </div>
-                  <div className={classes.textCenter}>
-                   <Button type="button" round color="success">Chat Now</Button>
-                  </div>
+
                 </CardBody>
               </div>
             </Card>
@@ -130,13 +129,63 @@ class SectionCards extends React.Component {
 
 export default withStyles(styles)(SectionCards);
 
-
-// <Button round justIcon color="info">
-//   <Subject />
-// </Button>
-// <Button round justIcon color="success">
-//   <Icon>mode_edit</Icon>
-// </Button>
-// <Button round justIcon color="danger">
-//   <Delete />
-// </Button>
+// <GridItem xs={12} sm={6} md={6} lg={4}>
+//   <div className={classes.rotatingCardContainer}>
+//     <Card background className={classes.cardRotate}>
+//       <div
+//         className={`${classes.front} ${
+//           classes.wrapperBackground
+//         }`}
+//         style={{
+//           backgroundImage: `url(${cardBlog5})`
+//         }}
+//       >
+//         <CardBody background className={classes.cardBodyRotate}>
+//           <h6 className={classes.cardCategoryWhite}>
+//             Full Background Card
+//           </h6>
+//           <a href="#pablo" onClick={e => e.preventDefault()}>
+//             <h3 className={classes.cardTitleWhite}>
+//               This Background Card Will Rotate on Hover
+//             </h3>
+//           </a>
+//           <p className={classes.cardDescriptionWhite}>
+//             Dont be scared of the truth because we need to
+//             restart the human foundation in truth And I love you
+//             like Kanye loves Kanye I love Rick Owens’ bed design
+//             but the back is...
+//           </p>
+//         </CardBody>
+//       </div>
+//       <div
+//         className={`${classes.back} ${
+//           classes.wrapperBackground
+//         }`}
+//         style={{
+//           backgroundImage: `url(${cardBlog5})`
+//         }}
+//       >
+//         <CardBody background className={classes.cardBodyRotate}>
+//           <h5 className={classes.cardTitleWhite}>
+//             Manage Post
+//           </h5>
+//           <p className={classes.cardDescriptionWhite}>
+//             As an Admin, you have shortcuts to edit, view or
+//             delete the posts.
+//           </p>
+//           <div className={classes.textCenter}>
+//             <Button round justIcon color="info">
+//               <Subject />
+//             </Button>
+//             <Button round justIcon color="success">
+//               <Icon>mode_edit</Icon>
+//             </Button>
+//             <Button round justIcon color="danger">
+//               <Delete />
+//             </Button>
+//           </div>
+//         </CardBody>
+//       </div>
+//     </Card>
+//   </div>
+// </GridItem>

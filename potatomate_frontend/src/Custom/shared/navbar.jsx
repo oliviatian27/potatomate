@@ -24,16 +24,26 @@ import { Link } from 'react-router-dom';
 import image from "assets/img/bg.jpg";
 import profileImage from "assets/img/faces/avatar.jpg";
 import { connect } from 'react-redux';
-import {searchItem,fetchCurrentUser,logOutUser}  from  'actions/action';
+import {searchItem,fetchCurrentUser,logOutUser,notifyNewMessage}  from  'actions/action';
 import bg4 from 'assets/img/bg4.jpg'
 import SignUp from 'Custom/components/login/signup'
 import Login from 'Custom/components/login/login'
+import { ActionCable } from 'react-actioncable-provider';
+import Popover from "@material-ui/core/Popover";
+import popoverStyles from "assets/jss/material-kit-pro-react/popoverStyles.jsx";
 
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+// const  style=(theme)=>{
+//   ...navbarsStyle(theme),
+//   ...popoverStyles()
+// }
 class SectionNavbars extends React.Component {
   state={
     searchInput:'',
     loginModal: false,
-    signupModal:false
+    signupModal:false,
+    openBottom: false
   }
   componentDidMount(){
     if (localStorage.getItem('jwt')&&!this.props.user.loggedIn) {
@@ -76,6 +86,17 @@ class SectionNavbars extends React.Component {
         return
     }
   }
+
+      handleClosePopover(state) {
+        this.setState({
+          [state]: false
+        });
+      }
+      handleClickButton(state) {
+        this.setState({
+          [state]: true
+        });
+      }
 
   render() {
     const { classes } = this.props;
@@ -149,6 +170,53 @@ class SectionNavbars extends React.Component {
                   </Button>:null}
 
                   </ListItem>
+                  {this.props.user.newMessages.length>0?
+                    <ListItem className={classes.listItem}>
+                              <Button
+                        buttonRef={node => {
+                          this.anchorElBottom = node;
+                        }}
+                        onClick={() => this.handleClickButton("openBottom")}
+                        className={classes.navLink}
+                        color="transparent"
+                      >
+                        You have {this.props.user.newMessages.length} New Messages
+                      </Button>
+                      <Popover
+                        classes={{
+                          paper: popoverStyles.popover
+                        }}
+                        open={this.state.openBottom}
+                        anchorEl={this.anchorElBottom}
+                        anchorReference={"anchorEl"}
+                        onClose={() => this.handleClosePopover("openBottom")}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "center"
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "center"
+                        }}
+                      >
+                      <List >
+                      {this.props.user.newMessages.map((message,idx)=>(
+
+                        <a href={`/profile/${message.user.id}`}>
+                         <ListItem button>
+                           <ListItemText primary={`${message.user.username}:${message.content}`} />
+                         </ListItem>
+                         <Divider />
+                         </a>
+
+                      ))}
+
+
+
+                          </List>
+                      </Popover>
+                    </ListItem>:null}
+
                   <ListItem className={classes.listItem}>
                   {!this.props.user.loggedIn? <Button
 
@@ -205,10 +273,18 @@ class SectionNavbars extends React.Component {
               }
             />
 
+            <ActionCable
+                key={this.props.user.user&&this.props.user.user.id}
+                channel={{ channel: 'ConversationsChannel', user: this.props.user.user&&this.props.user.user.id }}
+                onReceived={(res)=>{
+                  this.props.notifyNewMessage(res)
+                }}
+              />
+
 
       </div>
     );
   }
 }
 
-export default connect(({user})=>({user}),{searchItem,fetchCurrentUser,logOutUser})(withStyles(navbarsStyle)(SectionNavbars));
+export default connect(({user})=>({user}),{searchItem,fetchCurrentUser,logOutUser,notifyNewMessage})(withStyles(navbarsStyle)(SectionNavbars));

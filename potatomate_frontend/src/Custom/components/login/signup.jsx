@@ -134,7 +134,7 @@ class SignUp extends React.Component {
                     }}
                   />
                   <CustomInput
-                    id="login-modal-pass"
+                    id="login-modal-password"
                     formControlProps={{
                       fullWidth: true
                     }}
@@ -147,7 +147,8 @@ class SignUp extends React.Component {
                       placeholder: "Password...",
                       name:"password",
                       value:this.state.password,
-                      onChange:this.handleChange
+                      onChange:this.handleChange,
+                      type:"password"
                     }}
                   />
                 </CardBody>

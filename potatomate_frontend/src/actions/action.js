@@ -1,6 +1,6 @@
+import { API_ROOT, HEADERS } from 'Custom/data';
 const API_KEY=process.env.REACT_APP_API_KEY;
 const API_BACK_END="http://localhost:8000/api/v1"
-
 
 export function updateMovie(obj){
   return {
@@ -110,7 +110,7 @@ export function updateReview(obj) {
   }
 }
 
-export function submitReview(obj) {
+export function submitReview(obj,share) {
   return (dispatch)=>{
     fetch("http://localhost:8000/api/v1/reviews",{
       method:'POST',
@@ -123,6 +123,9 @@ export function submitReview(obj) {
     .then(res=>res.json())
     .then(data=>{
        dispatch(updateReview(data))
+       if (share) {
+         dispatch(postTweet({image:obj.image,content:obj.content,user_id:obj.user_id}))
+       }
     })
   }
 }
@@ -236,5 +239,102 @@ export const fetchProfileUser=(id)=>{
     fetch(`http://localhost:8000/api/v1/users/${id}`)
     .then(res=>res.json())
     .then(data=>dispatch(setProfileUser(data.user)))
+  }
+}
+
+export const setOriginalTweets=(array)=>{
+  return {
+    type:'SET_ORIGINAL_TWEETS',
+    payload:array
+  }
+}
+export const fetchOriginalTweets=()=>{
+  return (dispatch)=>{
+    fetch("http://localhost:8000/api/v1/tweets")
+    .then(res=>res.json())
+    .then(data=>dispatch(setOriginalTweets(data)))
+  }
+}
+export const updateTweet=(obj)=>{
+  return {
+    type:'UPDATE_TWEET',
+    payload:obj
+  }
+}
+
+
+export const postTweet=(obj)=>{
+  return (dispatch)=>{
+    fetch("http://localhost:8000/api/v1/tweets",{
+      method:'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({tweet:obj})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+       dispatch(updateTweet(data))
+    })
+  }
+}
+
+export const setConversation=(obj)=>{
+  return {
+    type:'SET_CONVERSATION',
+    payload:obj
+  }
+}
+
+export const fetchConversation=(recipient_id)=>{
+      return (dispatch)=>{
+        fetch(`${API_BACK_END}/profile`,{
+          method:'GET',
+          headers:{
+            Authorization:`Bearer ${localStorage.getItem('jwt')}`
+          }
+        }).then(res=>res.json())
+        .then(json=>{
+          fetch(`${API_ROOT}/conversations`, {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({title:'first',recipient_id:recipient_id,sender_id:json.user.id})
+          }).then(res=>res.json())
+          .then(json=>{
+            dispatch (setConversation(json))
+          })
+        })
+       }
+}
+
+export const notifyNewMessage=(obj)=>{
+  return {
+    type:'NOTIFY_NEW_MESSAGE',
+    payload:obj
+  }
+}
+
+export const updateFollowings=(obj)=>{
+  return {
+    type:"UPDATE_FOLLOWINGS",
+    payload:obj
+  }
+}
+
+export const followUser=(obj)=>{
+  return (dispatch)=>{
+    fetch("http://localhost:8000/api/v1/follows",{
+      method:'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({follow:obj})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+       dispatch(updateFollowings(data))
+    })
   }
 }

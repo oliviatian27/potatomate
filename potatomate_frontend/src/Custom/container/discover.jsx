@@ -28,8 +28,11 @@ import InfoArea from "components/InfoArea/InfoArea.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 
 import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageStyle.jsx";
-
+import BroadcastForm from 'Custom/components/discover/form'
+import Twitter from 'Custom/components/discover/twitter'
 import image from "assets/img/bg7.jpg";
+import {connect} from 'react-redux'
+import {fetchOriginalTweets} from 'actions/action'
 
 class Discover extends React.Component {
   constructor(props) {
@@ -38,25 +41,19 @@ class Discover extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
+      this.props.fetchOriginalTweets()
   }
   render() {
     const { classes, ...rest } = this.props;
     return (
       <div>
 
-        <div
-          className={classes.pageHeader}
-          style={{
-            backgroundImage: "url(" + image + ")",
-            backgroundSize: "cover",
-            backgroundPosition: "top center"
-          }}
-        >
+        <div >
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={12}>
+                <BroadcastForm />
+                {this.props.tweet.originalTweetList.map(tweet=><Twitter key={tweet.id} tweet={tweet} />)}
 
               </GridItem>
             </GridContainer>
@@ -68,4 +65,4 @@ class Discover extends React.Component {
   }
 }
 
-export default withStyles(signupPageStyle)(Discover);
+export default connect(({tweet})=>({tweet}),{fetchOriginalTweets})(withStyles(signupPageStyle)(Discover));

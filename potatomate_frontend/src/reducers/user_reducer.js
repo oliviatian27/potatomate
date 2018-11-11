@@ -1,10 +1,13 @@
+import { toast } from "react-toastify";
 const initialState={
   user:null,
   loggedIn:false,
   failedLogin:false,
   error:null,
   friendsList:[],
-  profileUser:{}
+  profileUser:{},
+  conversation:{},
+  newMessages:[]
 }
 
 export default function user(state=initialState,action){
@@ -22,6 +25,13 @@ export default function user(state=initialState,action){
       return initialState
     case 'SET_PROFILE_USER':
       return {...state,profileUser:action.payload}
+    case 'UPDATE_FOLLOWINGS':
+      return {...state,user:{...state.user,followings:state.user.followings.concat(action.payload)}}
+    case 'SET_CONVERSATION':
+      return {...state,conversation:action.payload}
+    case 'NOTIFY_NEW_MESSAGE':
+        toast.success(`${action.payload.user.username}:${action.payload.content}`);
+        return {...state,newMessages:state.newMessages.concat(action.payload)}
     default:
       return state
   }
