@@ -16,16 +16,7 @@ import Footer from "components/Footer/Footer.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-// sections for this page
-import SectionDescription from "views/PresentationPage/Sections/SectionDescription.jsx";
-import SectionComponents from "views/PresentationPage/Sections/SectionComponents.jsx";
-import SectionCards from "views/PresentationPage/Sections/SectionCards.jsx";
-import SectionContent from "views/PresentationPage/Sections/SectionContent.jsx";
-import SectionSections from "views/PresentationPage/Sections/SectionSections.jsx";
-import SectionExamples from "views/PresentationPage/Sections/SectionExamples.jsx";
-import SectionFreeDemo from "views/PresentationPage/Sections/SectionFreeDemo.jsx";
-import SectionOverview from "views/PresentationPage/Sections/SectionOverview.jsx";
-import SectionPricing from "views/PresentationPage/Sections/SectionPricing.jsx";
+
 
 import presentationStyle from "assets/jss/material-kit-pro-react/views/presentationStyle.jsx";
 import profilePageStyle from "assets/jss/material-kit-pro-react/views/profilePageStyle.jsx";
@@ -52,7 +43,7 @@ class Custom_Pop_Show extends React.Component {
     return (
       <div >
       <Parallax
-        image="https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c8df2caeb47cf27eae792735019e072f&auto=format&fit=crop&w=2100&q=80"
+        image="https://images.unsplash.com/photo-1507295386538-ddd5e86cd597?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=530c7e3fde63061f540c50986ce2a699&auto=format&fit=crop&w=2389&q=80"
 
         className={classes.parallax}
       />

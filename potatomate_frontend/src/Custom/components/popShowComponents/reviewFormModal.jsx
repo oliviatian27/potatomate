@@ -31,7 +31,7 @@ class ReviewFormModal extends React.Component {
     this.state = {
       liveDemo: false,
       content:'',
-      rating:3,
+      rating:0,
       share:true
     };
   }
@@ -69,7 +69,7 @@ class ReviewFormModal extends React.Component {
       rating_count:this.props.tv_movies.currentItem.vote_count,
       rating_average:this.props.tv_movies.currentItem.vote_average,
       media_type:this.props.type,
-      image:`https://image.tmdb.org/t/p/w500/${this.props.tv_movies.currentItem.backdrop_path}`
+      image:`https://image.tmdb.org/t/p/w500/${this.props.tv_movies.currentItem.backdrop_path}`,
     }
     this.props.submitReview(obj,this.state.share)
     this.setState({content:'',rating:''})
@@ -79,10 +79,10 @@ class ReviewFormModal extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div style={{textAlign:"center"}}>
       <Card>
 
-
+      <h2 className={`${classes.textCenter} ${classes.modalTitle }`}>Review Now</h2>
       <MuiThemeProvider>
       <Rating
             value={this.state.rating}
@@ -91,12 +91,7 @@ class ReviewFormModal extends React.Component {
 
           />
       </MuiThemeProvider>
-        <Button
-          color="transparent"
-          onClick={() => this.handleClickOpen("liveDemo")}
-        >
-         Review Now
-        </Button>
+      <br />
 
         </Card>
         <Dialog
@@ -126,7 +121,7 @@ class ReviewFormModal extends React.Component {
               {" "}
               <Close className={classes.modalClose} />
             </Button>
-            <h4 className={`${classes.textCenter} ${classes.modalTitle }`}>Review Now</h4>
+            <h2 className={`${classes.textCenter} ${classes.modalTitle }`}>Review Now</h2>
           </DialogTitle>
           <DialogContent
             id="classic-modal-slide-description"
@@ -144,6 +139,7 @@ class ReviewFormModal extends React.Component {
           <CustomInput
             labelText="Your Review"
             id="message"
+            success
             formControlProps={{
               fullWidth: true
             }}
@@ -162,18 +158,18 @@ class ReviewFormModal extends React.Component {
                 value="share"
               />
             }
-            label="share to my broadcast"
+            label="share to my twitter"
           />
 
           </DialogContent>
           <DialogActions className={classes.modalFooter}>
             <Button
               onClick={() => this.handleClose("liveDemo")}
-              color="secondary"
+              color="success"
             >
               Close
             </Button>
-            <Button color="primary" onClick={this.handleSubmit} className="reviewbutton">
+            <Button color="success" onClick={this.handleSubmit} className="reviewbutton">
             Submit Review</Button>
           </DialogActions>
 

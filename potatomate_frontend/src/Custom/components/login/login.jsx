@@ -22,6 +22,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {connect} from 'react-redux'
 import {handleLogin} from 'actions/action'
 import javascriptStyles from "assets/jss/material-kit-pro-react/views/componentsSections/javascriptStyles.jsx";
+import SnackbarContent from "components/Snackbar/SnackbarContent.jsx";
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -50,9 +51,19 @@ class ExampleLogin extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { user,classes } = this.props;
     return (
       <div>
+          {user.failedLogin&&<SnackbarContent
+            message={
+              <span>
+              {user.error}
+              </span>
+            }
+            close
+            color="danger"
+            icon="info_outline"
+          />}
         <Dialog
           classes={{
             root: classes.modalRoot,
@@ -98,7 +109,7 @@ class ExampleLogin extends React.Component {
 
                 <CardBody className={classes.cardLoginBody}>
                   <CustomInput
-                    
+
 
                     formControlProps={{
                       fullWidth: true
@@ -145,7 +156,7 @@ class ExampleLogin extends React.Component {
               <Button color="primary" simple size="lg" onClick={this.handleSubmit}>
               Log In
               </Button>
-              {this.props.loggedIn?<p> Successfully Logged In  </p>:null}
+
             </DialogActions>
           </Card>
         </Dialog>
@@ -154,4 +165,4 @@ class ExampleLogin extends React.Component {
   }
 }
 
-export default connect(({user:{loggedIn}})=>({loggedIn}),{handleLogin})(withStyles(javascriptStyles)(ExampleLogin));
+export default connect(({user})=>({user}),{handleLogin})(withStyles(javascriptStyles)(ExampleLogin));

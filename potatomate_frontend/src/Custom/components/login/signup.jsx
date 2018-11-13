@@ -22,7 +22,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {connect} from 'react-redux'
 import {handleSignUp} from 'actions/action'
 import javascriptStyles from "assets/jss/material-kit-pro-react/views/componentsSections/javascriptStyles.jsx";
-
+import SnackbarContent from "components/Snackbar/SnackbarContent.jsx";
 function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
@@ -51,9 +51,10 @@ class SignUp extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { user,classes } = this.props;
     return (
       <div>
+  
         <Dialog
           classes={{
             root: classes.modalRoot,
@@ -162,7 +163,7 @@ class SignUp extends React.Component {
               <Button color="primary" simple size="lg" onClick={this.handleSubmit}>
                 Get started
               </Button>
-              {this.props.loggedIn?<p> Successfully Logged In  </p>:null}
+
             </DialogActions>
           </Card>
         </Dialog>
@@ -171,4 +172,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default connect(({user:{loggedIn}})=>({loggedIn}),{handleSignUp})(withStyles(javascriptStyles)(SignUp));
+export default connect(({user})=>({user}),{handleSignUp})(withStyles(javascriptStyles)(SignUp));

@@ -47,6 +47,8 @@ import ReviewCard from 'Custom/components/profile/reviewcard'
 
 import EditProfile from 'Custom/components/profile/editProfile'
 import FollowUser from 'Custom/components/profile/followUser'
+import Following from 'Custom/components/profile/following'
+import Tweets from 'Custom/components/profile/tweets'
 import Chat from 'Custom/components/profile/Chat'
 import {fetchProfileUser} from 'actions/action'
 
@@ -55,7 +57,7 @@ class ProfilePage extends React.Component {
   componentDidMount() {
 
       this.props.fetchProfileUser(this.props.match.params.id)
-
+     window.scrollTo(0, 0)
   }
 
 
@@ -75,15 +77,18 @@ class ProfilePage extends React.Component {
       classes.imgFluid
     );
     const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
-    const user=this.props.user.profileUser
+
 
     const canEdit =  this.props.user &&  this.props.user.user && this.props.match.params.id == this.props.user.user.id;
-
+      const user=canEdit?this.props.user.user:this.props.user.profileUser
+    const imageUrl=canEdit?this.props.user.user.avatar:this.props.user.profileUser.avatar
+    const bio=canEdit?this.props.user.user.bio:this.props.user.profileUser.bio
+   const loggedIn=this.props.user.loggedIn
     return (
       <div key={this.props.match.params.id}>
 
         <Parallax
-          image="https://images.unsplash.com/photo-1520588706210-22b2119a058a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=459dc860b46db5482e4a7788e8b16fab&auto=format&fit=crop&w=2042&q=80"
+          image="https://images.unsplash.com/photo-1541890289-985799a6e4fc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a5ddd0c4aa5f53cab328d9f3c940406&auto=format&fit=crop&w=1951&q=80"
           filter="dark"
           className={classes.parallax}
         />
@@ -101,9 +106,10 @@ class ProfilePage extends React.Component {
                   </div>
                 </div>
                 <div className={classes.follow}>
-                {canEdit?<EditProfile user={user}/>:<FollowUser />}
 
-                {canEdit?null :<Chat recipient={user} recipient_id={this.props.match.params.id} sender={this.props.user.user}/>}
+                {loggedIn?(canEdit?<EditProfile user={user}/>:<FollowUser />):null}
+
+                {loggedIn&&!canEdit?<Chat recipient={user} recipient_id={this.props.match.params.id} sender={this.props.user.user}/>:null}
                 </div>
               </GridItem>
             </GridContainer>
@@ -145,204 +151,23 @@ class ProfilePage extends React.Component {
                     tabContent: (
                       <div>
                         <GridContainer justify="center">
-                          <GridItem
-                            xs={12}
-                            sm={12}
-                            md={5}
-                            className={classes.gridItem}
-                          >
-                            <Card profile plain className={classes.card}>
-                              <GridContainer>
-                                <GridItem xs={12} sm={12} md={5}>
-                                  <CardHeader image plain>
-                                    <a href="#pablo">
-                                      <img src={avatar} alt="..." />
-                                    </a>
-                                    <div
-                                      className={classes.coloredShadow}
-                                      style={{
-                                        backgroundImage: "url(" + avatar + ")",
-                                        opacity: "1"
-                                      }}
-                                    />
-                                  </CardHeader>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={7}>
-                                  <CardBody plain>
-                                    <h4 className={classes.cardTitle}>
-                                      Gigi Hadid
-                                    </h4>
-                                    <Muted>
-                                      <h6>MODEL</h6>
-                                    </Muted>
-                                    <p className={classes.description}>
-                                      Dont be scared of the truth because we
-                                      need to restart the human foundation in
-                                      truth...
-                                    </p>
-                                  </CardBody>
-                                </GridItem>
-                              </GridContainer>
-                            </Card>
-                          </GridItem>
-                          <GridItem
-                            xs={12}
-                            sm={12}
-                            md={5}
-                            className={classes.gridItem}
-                          >
-                            <Card profile plain className={classes.card}>
-                              <GridContainer>
-                                <GridItem xs={12} sm={12} md={5}>
-                                  <CardHeader image plain>
-                                    <a href="#pablo">
-                                      <img src={marc} alt="..." />
-                                    </a>
-                                    <div
-                                      className={classes.coloredShadow}
-                                      style={{
-                                        backgroundImage: "url(" + marc + ")",
-                                        opacity: "1"
-                                      }}
-                                    />
-                                  </CardHeader>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={7}>
-                                  <CardBody plain>
-                                    <h4 className={classes.cardTitle}>
-                                      Marc Jacobs
-                                    </h4>
-                                    <Muted>
-                                      <h6>DESIGNER</h6>
-                                    </Muted>
-                                    <p className={classes.description}>
-                                      Dont be scared of the truth because we
-                                      need to restart the human foundation in
-                                      truth...
-                                    </p>
-                                  </CardBody>
-                                </GridItem>
-                              </GridContainer>
-                            </Card>
-                          </GridItem>
-                        </GridContainer>
-                        <GridContainer justify="center">
-                          <GridItem
-                            xs={12}
-                            sm={12}
-                            md={5}
-                            className={classes.gridItem}
-                          >
-                            <Card profile plain className={classes.card}>
-                              <GridContainer>
-                                <GridItem xs={12} sm={12} md={5}>
-                                  <CardHeader image plain>
-                                    <a href="#pablo">
-                                      <img src={kendall} alt="..." />
-                                    </a>
-                                    <div
-                                      className={classes.coloredShadow}
-                                      style={{
-                                        backgroundImage: "url(" + kendall + ")",
-                                        opacity: "1"
-                                      }}
-                                    />
-                                  </CardHeader>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={7}>
-                                  <CardBody plain>
-                                    <h4 className={classes.cardTitle}>
-                                      Kendall Jenner
-                                    </h4>
-                                    <Muted>
-                                      <h6>MODEL</h6>
-                                    </Muted>
-                                    <p className={classes.description}>
-                                      I love you like Kanye loves Kanye. Dont
-                                      be scared of the truth.
-                                    </p>
-                                  </CardBody>
-                                </GridItem>
-                              </GridContainer>
-                            </Card>
-                          </GridItem>
-                          <GridItem
-                            xs={12}
-                            sm={12}
-                            md={5}
-                            className={classes.gridItem}
-                          >
-                            <Card profile plain className={classes.card}>
-                              <GridContainer>
-                                <GridItem xs={12} sm={12} md={5}>
-                                  <CardHeader image plain>
-                                    <a href="#pablo">
-                                      <img src={cardProfile2Square} alt="..." />
-                                    </a>
-                                    <div
-                                      className={classes.coloredShadow}
-                                      style={{
-                                        backgroundImage:
-                                          "url(" + cardProfile2Square + ")",
-                                        opacity: "1"
-                                      }}
-                                    />
-                                  </CardHeader>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={7}>
-                                  <CardBody plain>
-                                    <h4 className={classes.cardTitle}>
-                                      George West
-                                    </h4>
-                                    <Muted>
-                                      <h6>MODEL/DJ</h6>
-                                    </Muted>
-                                    <p className={classes.description}>
-                                      I love you like Kanye loves Kanye.
-                                    </p>
-                                  </CardBody>
-                                </GridItem>
-                              </GridContainer>
-                            </Card>
-                          </GridItem>
+                        <GridItem xs={12} sm={1} md={1}>
+                         </GridItem>
+                          <GridItem xs={12} sm={11} md={11}>
+                            <GridContainer >
+                        {user.followings&&user.followings.map((following,idx)=><Following key={following.id} following={following}/>)}
+                             </GridContainer>
+                           </GridItem>
                         </GridContainer>
                       </div>
                     )
                   },
                   {
-                    tabButton: "Media",
+                    tabButton: "Tweets",
                     tabIcon: Camera,
                     tabContent: (
-                      <GridContainer justify="center">
-                        <GridItem xs={12} sm={12} md={3}>
-                          <img
-                            alt="..."
-                            src={mariyaGeorgieva}
-                            className={navImageClasses}
-                          />
-                          <img
-                            alt="..."
-                            src={clemOnojegaw}
-                            className={navImageClasses}
-                          />
-                        </GridItem>
-                        <GridItem xs={12} sm={12} md={3}>
-                          <img
-                            alt="..."
-                            src={clemOnojeghuo}
-                            className={navImageClasses}
-                          />
-                          <img
-                            alt="..."
-                            src={oluEletu}
-                            className={navImageClasses}
-                          />
-                          <img
-                            alt="..."
-                            src={cynthiaDelRio}
-                            className={navImageClasses}
-                          />
-                        </GridItem>
+                      <GridContainer >
+                      {user.tweets&&user.tweets.map((tweet,idx)=><Tweets key={idx} tweet={tweet}/>)}
                       </GridContainer>
                     )
                   }

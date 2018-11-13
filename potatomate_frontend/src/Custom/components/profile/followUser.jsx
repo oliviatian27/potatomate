@@ -12,20 +12,20 @@ import {followUser} from 'actions/action'
 
 class FollowUser extends React.Component {
 
+
   handleClick=(e)=>{
-    console.log(this.props.user);
     this.props.followUser({follower_id:this.props.user.user.id,followee_id:this.props.user.profileUser.id})
   }
 
    render(){
-     const { classes, ...rest } = this.props;
+     const { classes, user, ...rest } = this.props;
 
-     const canFollow=this.props.user.user&&this.props.user.user.followings&&this.props.user.profileUser&&this.props.user.user.followings.find(person=>(person.id===this.props.user.profileUser.id))
+     const alreadyFollowing = user.user && user.user.followings && user.profileUser && !!user.user.followings.find(person=>(person.id===user.profileUser.id))
 
      return (
-       <span>
+       <span >
 
-       {!!canFollow?
+       {!!alreadyFollowing?
        <Button color="success" round disabled>Following</Button>
        :<Tooltip
             id="tooltip-top"

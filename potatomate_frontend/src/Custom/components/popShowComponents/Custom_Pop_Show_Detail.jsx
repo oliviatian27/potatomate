@@ -46,8 +46,8 @@ class  Custom_Pop_Show_Detail extends React.Component {
 
       <div className={`${classes.projects} ${classes.projects4}`}>
         <div className={classes.container}>
-            <div className={`${classes.title} ${classes.textCenter}`}>
-              <h1 style={{fontWeight:"600"}}>{currentItem.title}{currentItem.name}</h1>
+            <div className={classes.textCenter}>
+              <h1 style={{fontWeight:"400"}}>{currentItem.title}{currentItem.name}</h1>
             </div>
           <GridContainer>
 
@@ -106,7 +106,7 @@ class  Custom_Pop_Show_Detail extends React.Component {
                 icon={Language}
                 iconColor="primary"
               />
-            
+
               <InfoArea
                 className={classes.info4}
                 title="Production Companies"
@@ -117,7 +117,7 @@ class  Custom_Pop_Show_Detail extends React.Component {
               <div>
 
 
-               <ReviewForm   type={type}/>
+              {this.props.user&& <ReviewForm   type={type}/>}
 
               </div>
             </GridItem>
@@ -154,4 +154,4 @@ class  Custom_Pop_Show_Detail extends React.Component {
 
 
 export default connect(state=>({currentItemReviews:state.tv_movies.currentItemReviews,
-   currentItemRecommendations:state.tv_movies.currentItemRecommendations})) (withStyles(projectsStyle)(Custom_Pop_Show_Detail));
+   currentItemRecommendations:state.tv_movies.currentItemRecommendations,user:state.user.user})) (withStyles(projectsStyle)(Custom_Pop_Show_Detail));

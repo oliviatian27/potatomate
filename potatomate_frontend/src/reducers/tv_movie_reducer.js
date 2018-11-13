@@ -20,7 +20,7 @@ export default function tv_movies(state={originalMovieList:{},
        return {...state,currentItemRecommendations:action.payload}
       break;
    case 'UPDATE_REVIEW':
-      return {...state,currentItemReviews:state.currentItemReviews.concat(action.payload)}
+      return {...state,currentItemReviews:[action.payload,...state.currentItemReviews]}
     default:
        return state
   }

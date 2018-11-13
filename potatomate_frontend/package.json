@@ -30,6 +30,7 @@
     "react-hot-loader": "^4.3.11",
     "react-image-gallery": "0.8.11",
     "react-images-upload": "^1.2.3",
+    "react-moment": "^0.8.3",
     "react-rater": "^5.0.3",
     "react-redux": "^5.1.0",
     "react-router-dom": "4.3.1",

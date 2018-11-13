@@ -30,8 +30,13 @@ class ReviewCard extends React.Component{
     className={this.props.classes.cardBody}
     >
 
+        <a href={`/${this.props.review.tvmovie.media_type}/${this.props.review.tvmovie.tmdbid}`} >
+        <h2 className={this.props.classes.cardTitleWhite}>
+        {this.props.review.tvmovie.name}
+        </h2>
+        </a>
             <h4 className={classes.cardTitleWhite}>
-            {this.props.review.content}
+             Review:{this.props.review.content}
              </h4>
             <br />
             <Badge
@@ -42,11 +47,6 @@ class ReviewCard extends React.Component{
            rating:  {this.props.review.rating}
             </Badge>
 
-            <a href={`/${this.props.review.tvmovie.media_type}/${this.props.review.tvmovie.tmdbid}`} >
-            <h2 className={this.props.classes.cardTitleWhite}>
-            {this.props.review.tvmovie.name}
-            </h2>
-            </a>
     </CardBody>
 
     </Card>

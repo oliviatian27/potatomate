@@ -9,51 +9,51 @@ import ListItem from "@material-ui/core/ListItem";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
-import Group from "@material-ui/icons/Group";
-import Face from "@material-ui/icons/Face";
-import Email from "@material-ui/icons/Email";
-import Check from "@material-ui/icons/Check";
-import Favorite from "@material-ui/icons/Favorite";
+
+import classNames from "classnames";
 // core components
-import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Footer from "components/Footer/Footer.jsx";
+
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import InfoArea from "components/InfoArea/InfoArea.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 
-import signupPageStyle from "assets/jss/material-kit-pro-react/views/signupPageStyle.jsx";
+import CustomInput from "components/CustomInput/CustomInput.jsx";
+import Parallax from "components/Parallax/Parallax.jsx";
+
 import BroadcastForm from 'Custom/components/discover/form'
+import SelectTwitter from 'Custom/components/discover/selectTwitter'
 import Twitter from 'Custom/components/discover/twitter'
 import image from "assets/img/bg7.jpg";
 import {connect} from 'react-redux'
 import {fetchOriginalTweets} from 'actions/action'
+import profilePageStyle from "assets/jss/material-kit-pro-react/views/profilePageStyle.jsx";
 
 class Discover extends React.Component {
   constructor(props) {
     super(props);
 
   }
+  componentDidMount(){
+    this.props.fetchOriginalTweets("all")
 
-  componentDidMount() {
-      this.props.fetchOriginalTweets()
   }
   render() {
     const { classes, ...rest } = this.props;
     return (
       <div>
+      <Parallax
+        image="https://images.unsplash.com/photo-1540205082-e56e180508e6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7cc8260f6b8370c4e32ab6bfc1034254&auto=format&fit=crop&w=2378&q=80"
 
-        <div >
-          <div className={classes.container}>
+        className={classes.parallax}
+      />
+
+      <div className={classNames(classes.main, classes.mainRaised)}  style={{"backgroundColor":"#f2fcf6"}}>
+        <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={12}>
-                <BroadcastForm />
-                {this.props.tweet.originalTweetList.map(tweet=><Twitter key={tweet.id} tweet={tweet} />)}
+              <GridItem xs={12} sm={10} md={10}>
+              {this.props.user.loggedIn? <BroadcastForm />:null}
+                {this.props.user.loggedIn?<SelectTwitter />:null}
+
+                {this.props.tweet.originalTweetList.map((tweet,idx)=><Twitter key={idx} tweet={tweet} />)}
 
               </GridItem>
             </GridContainer>
@@ -65,4 +65,4 @@ class Discover extends React.Component {
   }
 }
 
-export default connect(({tweet})=>({tweet}),{fetchOriginalTweets})(withStyles(signupPageStyle)(Discover));
+export default connect(({user,tweet})=>({user,tweet}),{fetchOriginalTweets})(withStyles(profilePageStyle)(Discover));

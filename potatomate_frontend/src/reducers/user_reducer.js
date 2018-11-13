@@ -7,7 +7,6 @@ const initialState={
   friendsList:[],
   profileUser:{},
   conversation:{},
-  newMessages:[]
 }
 
 export default function user(state=initialState,action){
@@ -31,7 +30,8 @@ export default function user(state=initialState,action){
       return {...state,conversation:action.payload}
     case 'NOTIFY_NEW_MESSAGE':
         toast.success(`${action.payload.user.username}:${action.payload.content}`);
-        return {...state,newMessages:state.newMessages.concat(action.payload)}
+        const messages=state.user.allMessages.filter(message=>message.user.id!==action.payload.user.id)
+        return {...state,user:{...state.user,allMessages:[action.payload,...messages]}}
     default:
       return state
   }

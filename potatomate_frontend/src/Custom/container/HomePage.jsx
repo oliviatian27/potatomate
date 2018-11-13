@@ -55,6 +55,7 @@ class PresentationPage extends React.Component {
     this.props.fetchMovie("tv",'&with_genres=18','drama','popularity.desc',1)
     this.props.fetchMovie("tv",'&with_genres=80','crime','popularity.desc',1)
     this.props.fetchMovie("tv",'&with_genres=16','animation','popularity.desc',1)
+    window.scrollTo(0, 0)
 
   }
   render() {
@@ -66,7 +67,7 @@ class PresentationPage extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>
                 <h2 className={classes.title}>
-                  A Place for You to Share and Discover New Movie and Tv Show
+                  A Place for You to Share and Discover New Movies and Tv Shows
                 </h2>
               </GridItem>
             </GridContainer>

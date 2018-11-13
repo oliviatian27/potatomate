@@ -57,39 +57,6 @@ class Chat extends Component {
             }
           />
 
-          {this.state.newMessage?(<div>
-            <SnackbarContent
-     message={
-         <span>
-           <b>{this.state.newMessage.user.username}says:</b> {this.state.newMessage.content}
-         </span>
-     }
-     close
-     color="success"
-     autoHideDuration="3"
-     icon="info_outline"
-   /> <Clearfix /></div>) :null}
-   {/*
-     this.state.newMessages.map(message=>(<div>
-           <SnackbarContent
-      message={
-        <span>
-          <b>{message.user.username}says:</b> {message.content}
-        </span>
-      }
-      close={
-        ()=>{
-          this.state.newMessages.shift();
-          this.setState({
-            newMessages:this.state.newMessages
-          })
-        }
-      }
-      color="success"
-      autoHideDuration="3"
-      icon="info_outline"
-      /> <Clearfix /></div>) )
-     */ }
 
       <Widget
         handleNewUserMessage={this.handleNewUserMessage}

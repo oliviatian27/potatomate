@@ -30,7 +30,7 @@ class Custom_Review extends React.Component {
 
 
   render() {
-    const { classes,type,tv_movies,user,...rest } = this.props;
+    const { classes,type,tv_movies,user,submitReview,...rest } = this.props;
 
     const selfReview=this.props.tv_movies&&this.props.user.user&&this.props.tv_movies.currentItemReviews.filter(review=>review.user.id===this.props.user.user.id)
   console.log(selfReview);
@@ -53,7 +53,7 @@ class Custom_Review extends React.Component {
 
                 </CardBody>
               </Card>
-                  : <ReviewFormModal tv_movies={tv_movies} user={user} submitReview={this.props.submitReview}/>}
+                  : <ReviewFormModal tv_movies={tv_movies} user={user} submitReview={submitReview}/>}
 
               </GridItem>
               <GridItem xs={12} sm={1} md={1}>

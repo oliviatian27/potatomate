@@ -171,7 +171,7 @@ export function handleSignUp(obj){
 
       localStorage.setItem('jwt',json.jwt)
       dispatch(setCurrentUser(json.user))
-    }).catch(r=>r.json().then(e=>dispatch({type:'FAILED_SIGNUP',payload:e.message})))
+    }).catch(r=>r.json().then(e=>dispatch({type:'FAILED_SIGNUP',payload:e.error})))
   }
 }
 
@@ -248,11 +248,17 @@ export const setOriginalTweets=(array)=>{
     payload:array
   }
 }
-export const fetchOriginalTweets=()=>{
+export const fetchOriginalTweets=(filter,user_id)=>{
   return (dispatch)=>{
-    fetch("http://localhost:8000/api/v1/tweets")
-    .then(res=>res.json())
-    .then(data=>dispatch(setOriginalTweets(data)))
+    if (filter==="all") {
+      fetch("http://localhost:8000/api/v1/tweets")
+      .then(res=>res.json())
+      .then(data=>dispatch(setOriginalTweets(data)))
+    }else {
+      fetch(`http://localhost:8000/api/v1/followed_tweets/${user_id}`)
+      .then(res=>res.json())
+      .then(data=>dispatch(setOriginalTweets(data)))
+    }
   }
 }
 export const updateTweet=(obj)=>{
@@ -335,6 +341,29 @@ export const followUser=(obj)=>{
     .then(res=>res.json())
     .then(data=>{
        dispatch(updateFollowings(data))
+    })
+  }
+}
+
+export const updateFavorite=(tweet)=>{
+  return {
+    type:"UPDATE_FAVORITE",
+    payload:tweet
+  }
+}
+
+export const handleFavorite=(tweet_id)=>{
+  return (dispatch)=>{
+    fetch(`http://localhost:8000/api/v1/tweets/${tweet_id}`,{
+      method:'PATCH',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>{
+       dispatch(updateFavorite(data))
     })
   }
 }

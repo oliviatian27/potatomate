@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get '/find_conversation/:id',to: 'conversations#find_conversation'
       get '/profile', to: 'users#profile'
       get '/findfriends/:id',to: 'users#find_friends'
+      get '/followed_tweets/:id',to:'tweets#followed_tweets'
     end
   end
 end

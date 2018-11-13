@@ -22,14 +22,9 @@ import Button from "components/CustomButtons/Button.jsx";
 import Media from "components/Media/Media.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Paginations from "components/Pagination/Pagination.jsx";
-
+import Star from "@material-ui/icons/Star";
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
-
-import avatar from "assets/img/faces/avatar.jpg";
-import kendall from "assets/img/faces/kendall.jpg";
-import marc from "assets/img/faces/marc.jpg";
-import placeholder from "assets/img/placeholder.jpg";
-
+import Moment from 'react-moment';
 
 
 class SectionContentAreas extends React.Component {
@@ -60,9 +55,13 @@ class SectionContentAreas extends React.Component {
 
                 <Media
                   avatar={review.user.avatar}
+                  avatarLink={`/profile/${review.user.id}`}
                   title={
                     <span>
-                      {review.user.username}<small>· {new Date(review.created_at).toDateString()}</small>
+                    <h2 style={{display:"inline"}}>  {review.user.username} </h2>
+                      {[...Array(review.rating/2)].map((e, i) => <span  key={i}><Star nativeColor="#f98f3e"/></span>)}
+
+                      <small>· <Moment fromNow>{review.created_at}</Moment></small>
                     </span>
                   }
                   body={
@@ -71,25 +70,12 @@ class SectionContentAreas extends React.Component {
                         {review.content}
 
                       </p>
-                       Rating:{review.rating}
+
                     </span>
                   }
                   footer={
                     <div>
-                      <Tooltip
-                        id="tooltip-tina"
-                        title="Reply to comment"
-                        placement="top"
-                        classes={{ tooltip: classes.tooltip }}
-                      >
-                        <Button
-                          color="primary"
-                          simple
-                          className={classes.floatRight}
-                        >
-                          <Reply /> Reply
-                        </Button>
-                      </Tooltip>
+
                       <Button
                         color="danger"
                         simple
@@ -99,7 +85,7 @@ class SectionContentAreas extends React.Component {
                       </Button>
                     </div>
                   }
-                  
+
                 />
 
              </div>

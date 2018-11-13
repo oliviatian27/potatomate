@@ -6,7 +6,7 @@ class Api::V1::FollowsController < ApplicationController
 
     if @follow.valid?
 
-      render json: @follow, status: :created
+      render json: {id:@follow.followee_id}, status: :created
     else
       render json: { error: 'failed to create follow' }, status: :not_acceptable
     end

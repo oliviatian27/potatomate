@@ -70,7 +70,7 @@ class SectionCards extends React.Component {
       var rotatingCard = rotatingCards[i];
       var rotatingWrapper = rotatingCard.parentElement;
       var cardWidth = rotatingCard.parentElement.offsetWidth;
-      var cardHeight = rotatingCard.children[0].children[0].offsetHeight;
+      var cardHeight = cardWidth; // rotatingCard.children[0].children[0].offsetHeight;
       rotatingWrapper.style.height = cardHeight + "px";
       rotatingWrapper.style["margin-bottom"] = 30 + "px";
       var cardFront = rotatingCard.getElementsByClassName(classes.front)[0];

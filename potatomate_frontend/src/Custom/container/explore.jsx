@@ -52,7 +52,9 @@ class Explore extends React.Component {
         {/* Blogs 1 START */}
         <div className={classes.blog}>
           <div className={classes.container} style={{textAlign:"center"}}>
-            <h2 className={classes.title}>{this.props.match.params.media_type}</h2>
+            <div style={{padding:"30px"}}>
+            <h1 >Discover more {this.props.match.params.media_type}s</h1>
+            </div>
               <ExploreButton handleClick={this.handleClick} handleRadio={this.handleRadio} sortType={this.state.sortType} media_type={this.props.match.params.media_type} />
               <GridContainer>
               {originalMovieList.pop&&originalMovieList.pop.map(item=>< ExploreItem key={item.id} item={item} media_type={this.props.match.params.media_type}/>)}

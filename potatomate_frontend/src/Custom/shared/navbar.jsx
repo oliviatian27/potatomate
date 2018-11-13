@@ -34,10 +34,8 @@ import popoverStyles from "assets/jss/material-kit-pro-react/popoverStyles.jsx";
 
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-// const  style=(theme)=>{
-//   ...navbarsStyle(theme),
-//   ...popoverStyles()
-// }
+import MessageContainer from 'Custom/components/navbar'
+
 class SectionNavbars extends React.Component {
   state={
     searchInput:'',
@@ -87,16 +85,7 @@ class SectionNavbars extends React.Component {
     }
   }
 
-      handleClosePopover(state) {
-        this.setState({
-          [state]: false
-        });
-      }
-      handleClickButton(state) {
-        this.setState({
-          [state]: true
-        });
-      }
+
 
   render() {
     const { classes } = this.props;
@@ -139,7 +128,7 @@ class SectionNavbars extends React.Component {
                       className={classes.navLink}
                       color="transparent"
                     >
-                      Discover
+                      Twitter
                     </Button>
                   </ListItem>
                   <ListItem className={classes.listItem}>
@@ -170,51 +159,9 @@ class SectionNavbars extends React.Component {
                   </Button>:null}
 
                   </ListItem>
-                  {this.props.user.newMessages.length>0?
+                  {this.props.user.user&&this.props.user.user.allMessages.length>0?
                     <ListItem className={classes.listItem}>
-                              <Button
-                        buttonRef={node => {
-                          this.anchorElBottom = node;
-                        }}
-                        onClick={() => this.handleClickButton("openBottom")}
-                        className={classes.navLink}
-                        color="transparent"
-                      >
-                        You have {this.props.user.newMessages.length} New Messages
-                      </Button>
-                      <Popover
-                        classes={{
-                          paper: popoverStyles.popover
-                        }}
-                        open={this.state.openBottom}
-                        anchorEl={this.anchorElBottom}
-                        anchorReference={"anchorEl"}
-                        onClose={() => this.handleClosePopover("openBottom")}
-                        anchorOrigin={{
-                          vertical: "bottom",
-                          horizontal: "center"
-                        }}
-                        transformOrigin={{
-                          vertical: "top",
-                          horizontal: "center"
-                        }}
-                      >
-                      <List >
-                      {this.props.user.newMessages.map((message,idx)=>(
-
-                        <a href={`/profile/${message.user.id}`}>
-                         <ListItem button>
-                           <ListItemText primary={`${message.user.username}:${message.content}`} />
-                         </ListItem>
-                         <Divider />
-                         </a>
-
-                      ))}
-
-
-
-                          </List>
-                      </Popover>
+                     <MessageContainer messages={this.props.user.user.allMessages}/>
                     </ListItem>:null}
 
                   <ListItem className={classes.listItem}>
@@ -264,7 +211,6 @@ class SectionNavbars extends React.Component {
                       }}
                       dropdownList={[
                         "My Profile",
-                        "Settings",
                         "Sign out"
                       ]}
                     />:null}
@@ -288,3 +234,20 @@ class SectionNavbars extends React.Component {
 }
 
 export default connect(({user})=>({user}),{searchItem,fetchCurrentUser,logOutUser,notifyNewMessage})(withStyles(navbarsStyle)(SectionNavbars));
+
+
+// <List >
+// {this.props.user.user&&this.props.user.user.allMessages.map((message,idx)=>(
+// <span key={idx}>
+//   <a href={`/profile/${message.user.id}`}>
+//    <ListItem button>
+//      <ListItemText primary={`${message.user.username}:${message.content}`} />
+//    </ListItem>
+//    <Divider />
+//    </a>
+//  </span>
+// ))}
+//
+//
+//
+//     </List>
