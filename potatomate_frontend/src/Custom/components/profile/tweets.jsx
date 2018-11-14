@@ -22,7 +22,7 @@ function Tweets(props) {
   return (
     <GridItem xs={12} sm={12} md={4} >
 
-      <Card >
+      <Card style={{height:'18vw'}}>
         <CardBody>
 
           <p>
@@ -35,12 +35,12 @@ function Tweets(props) {
             </small>
           </p>
         </CardBody>
-        <CardBody style={{height:'20vw'}}>
+        <CardBody >
         <img
           className={classes.imgCardBottom}
           src={tweet.image}
           alt="Card-img-cap"
-          style={{maxHeight:'18vw'}}
+          style={{maxHeight:'14vw'}}
 
         />
         </CardBody>

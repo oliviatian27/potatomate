@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import SnackbarContent from "components/Snackbar/SnackbarContent.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
 import {fetchConversation} from 'actions/action'
+import Button from 'components/CustomButtons/Button.jsx';
 class Chat extends Component {
   constructor(props){
     super(props)
@@ -39,7 +40,10 @@ class Chat extends Component {
         body: JSON.stringify({content:newMessage,user_id:this.props.sender.id,conversation_id:this.props.user.conversation.id,recipient_id:this.props.recipient_id})
       })
   }
-
+  getCustomLauncher = handleToggle => (
+    // The return will be your own Launcher component
+      <Button  color="success" size="lg" id="chatbutton" onClick={handleToggle}>Chat Now</Button>
+   )
 
   render() {
     return (
@@ -63,7 +67,7 @@ class Chat extends Component {
         profileAvatar={this.props.recipient.avatar}
         title={`Say Hi to ${this.props.recipient.username} Now :)`}
         subtitle="some thing"
-
+        launcher={handleToggle => this.getCustomLauncher(handleToggle)}
       />
       </div>
     );

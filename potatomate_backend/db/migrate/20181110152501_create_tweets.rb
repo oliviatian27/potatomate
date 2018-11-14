@@ -4,6 +4,7 @@ class CreateTweets < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :image
       t.string :user_id
+      t.integer :like
 
       t.timestamps
     end

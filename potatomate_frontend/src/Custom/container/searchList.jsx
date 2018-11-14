@@ -21,7 +21,7 @@ function SearchList({ ...props }) {
         <div className={classes.container}>
         <br />
          <div style={{textAlign:"center"}}>
-          <h2 className={classes.title}>Search Results</h2>
+          <h1 className={classes.title}>Search Results</h1>
           </div>
           <GridContainer>
           {list.results&&list.results.map(item=><SearchListItem key={item.id} info={item}/>)}

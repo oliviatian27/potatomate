@@ -367,3 +367,26 @@ export const handleFavorite=(tweet_id)=>{
     })
   }
 }
+
+export const updateReviewFavorite=(review)=>{
+  return {
+    type:"UPDATE_REVIEW_FAVORITE",
+    payload:review
+  }
+}
+
+export const handleReviewFavorite=(review_id)=>{
+  return (dispatch)=>{
+    fetch(`http://localhost:8000/api/v1/reviews/${review_id}`,{
+      method:'PATCH',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>{
+       dispatch(updateReviewFavorite(data))
+    })
+  }
+}

@@ -19,3 +19,6 @@ button.RegularButton-button-189.ExploreButton{
 #root > div > div:nth-child(2) > div > div > div > div > div > div > div > div.MuiGrid-container-442.GridContainer-grid-441 > div:nth-child(1) > div > div{
   padding:0;
 }
+#chatbutton{
+  background:#67c9e2;
+}

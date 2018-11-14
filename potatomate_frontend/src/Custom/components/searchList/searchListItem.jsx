@@ -36,7 +36,7 @@ function searchListItem({ ...props }) {
       className={`${classes.mlAuto} ${classes.mrAuto}`}
     >
 
-      <Card plain blog className={classes.card}>
+      <Card plain blog className={classes.card} style={{marginBottom:"30px"}}>
         <GridContainer>
           <GridItem xs={12} sm={5} md={5}>
            <Link to={`/${info.media_type}/${info.id}`} >

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_035232) do
+ActiveRecord::Schema.define(version: 2018_11_11_153332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2018_11_12_035232) do
   create_table "conversations", force: :cascade do |t|
     t.integer "recipient_id"
     t.integer "sender_id"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
   end
 
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_035232) do
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
+    t.integer "like"
     t.bigint "user_id"
     t.bigint "tvmovie_id"
     t.datetime "created_at", null: false
@@ -67,9 +68,9 @@ ActiveRecord::Schema.define(version: 2018_11_12_035232) do
     t.string "content"
     t.string "image"
     t.string "user_id"
+    t.integer "like"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "like"
   end
 
   create_table "users", force: :cascade do |t|

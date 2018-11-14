@@ -31,9 +31,9 @@ class Friends extends React.Component {
 
       <div className={classes.container} style={{marginTop:"5%",marginBottom:"20px", minHeight:"700px",textAlign:"center"}}>
       <div style={{padding:"20px"}}>
-      <h1>Congrats!You get {friendsList.length} matched friends</h1>
+      {friendsList.length>0?<h1>Congrats!You get {friendsList.length} matched friends</h1>:<h1>You get 0 friends now,go review and get more friends :)</h1>}
       </div>
-      
+
         <GridContainer  >
         {friendsList.map(friend=><FriendsItem key={friend.user.id} friend={friend}/>)}
 

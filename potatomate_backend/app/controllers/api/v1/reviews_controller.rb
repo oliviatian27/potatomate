@@ -1,5 +1,5 @@
 class Api::V1::ReviewsController < ApplicationController
-  skip_before_action :authorized, only: [:create,:get_item_reviews]
+  skip_before_action :authorized, only: [:create,:get_item_reviews,:update]
   def create
      @tvmovie=Tvmovie.find_by(tmdbid:review_params[:tmdbid])
      if @tvmovie
@@ -19,6 +19,12 @@ class Api::V1::ReviewsController < ApplicationController
     else
       render json:[]
     end
+  end
+
+  def update
+      @review=Review.find(params[:id])
+      @review.increment!(:like)
+      render json: ReviewSerializer.new(@review)
   end
 
   private

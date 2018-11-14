@@ -25,15 +25,16 @@ import Paginations from "components/Pagination/Pagination.jsx";
 import Star from "@material-ui/icons/Star";
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
 import Moment from 'react-moment';
-
+import {handleReviewFavorite} from 'actions/action'
+import {connect} from 'react-redux'
 
 class SectionContentAreas extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      checked: [1, 3, 5]
-    };
 
+  }
+  handleReviewFavorite=(id)=>{
+    this.props.handleReviewFavorite(id)
   }
 
   render() {
@@ -80,8 +81,9 @@ class SectionContentAreas extends React.Component {
                         color="danger"
                         simple
                         className={classes.floatRight}
+                        onClick={()=>this.handleReviewFavorite(review.id)}
                       >
-                        <Favorite /> 243
+                        <Favorite /> {review.like}
                       </Button>
                     </div>
                   }
@@ -97,4 +99,4 @@ class SectionContentAreas extends React.Component {
   }
 }
 
-export default withStyles(style)(SectionContentAreas);
+export default connect(null,{handleReviewFavorite})(withStyles(style)(SectionContentAreas));

@@ -50,7 +50,7 @@ class Explore extends React.Component {
     return (
       <div className="cd-section" {...rest}>
         {/* Blogs 1 START */}
-        <div className={classes.blog}>
+        <div className={classes.blog} >
           <div className={classes.container} style={{textAlign:"center"}}>
             <div style={{padding:"30px"}}>
             <h1 >Discover more {this.props.match.params.media_type}s</h1>

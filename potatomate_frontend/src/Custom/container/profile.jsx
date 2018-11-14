@@ -28,7 +28,7 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
-import christian from "assets/img/faces/christian.jpg";
+import profile from "assets/img/profile.jpg";
 import oluEletu from "assets/img/examples/olu-eletu.jpg";
 import clemOnojeghuo from "assets/img/examples/clem-onojeghuo.jpg";
 import cynthiaDelRio from "assets/img/examples/cynthia-del-rio.jpg";
@@ -88,8 +88,8 @@ class ProfilePage extends React.Component {
       <div key={this.props.match.params.id}>
 
         <Parallax
-          image="https://images.unsplash.com/photo-1541890289-985799a6e4fc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7a5ddd0c4aa5f53cab328d9f3c940406&auto=format&fit=crop&w=1951&q=80"
-          filter="dark"
+          image={"https://images.pexels.com/photos/64775/pexels-photo-64775.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"}
+
           className={classes.parallax}
         />
         <div className={classNames(classes.main, classes.mainRaised)}>

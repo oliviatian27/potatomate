@@ -21,6 +21,9 @@ export default function tv_movies(state={originalMovieList:{},
       break;
    case 'UPDATE_REVIEW':
       return {...state,currentItemReviews:[action.payload,...state.currentItemReviews]}
+  case 'UPDATE_REVIEW_FAVORITE':
+     return {...state,currentItemReviews:state.currentItemReviews.map(review=>review.id===action.payload.id?
+     action.payload:review)}
     default:
        return state
   }

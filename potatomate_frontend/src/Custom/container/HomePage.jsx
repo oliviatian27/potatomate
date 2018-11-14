@@ -10,17 +10,7 @@ import { Link } from 'react-router-dom'
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 
-// import React from "react";
-// // @material-ui/core components
-// import withStyles from "@material-ui/core/styles/withStyles";
-// import List from "@material-ui/core/List";
-// import ListItem from "@material-ui/core/ListItem";
-// // @material-ui/icons
-// import Favorite from "@material-ui/icons/Favorite";
-// // core components
-// import Header from "components/Header/Header.jsx";
-// import HeaderLinks from "components/Header/HeaderLinks.jsx";
-// import Footer from "components/Footer/Footer.jsx";
+import home from "assets/img/home.jpeg";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 // import Parallax from "components/Parallax/Parallax.jsx";
@@ -62,7 +52,7 @@ class PresentationPage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-      <Parallax image="https://images.unsplash.com/photo-1540205082-e56e180508e6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7cc8260f6b8370c4e32ab6bfc1034254&auto=format&fit=crop&w=2389&q=80"  small>
+      <Parallax image={home}  small>
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>
@@ -86,3 +76,5 @@ class PresentationPage extends React.Component {
 }
 
 export default connect(null,{fetchMovie})(withStyles(blogPostsPageStyle)(PresentationPage));
+
+// https://images.unsplash.com/photo-1540205082-e56e180508e6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7cc8260f6b8370c4e32ab6bfc1034254&auto=format&fit=crop&w=2389&q=80
