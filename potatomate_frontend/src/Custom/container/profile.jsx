@@ -12,6 +12,7 @@ import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
 import People from "@material-ui/icons/People";
 import Add from "@material-ui/icons/Add";
+import InsertChart from "@material-ui/icons/InsertChart";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
 
@@ -28,17 +29,7 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import Clearfix from "components/Clearfix/Clearfix.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
-import profile from "assets/img/profile.jpg";
-import oluEletu from "assets/img/examples/olu-eletu.jpg";
-import clemOnojeghuo from "assets/img/examples/clem-onojeghuo.jpg";
-import cynthiaDelRio from "assets/img/examples/cynthia-del-rio.jpg";
-import mariyaGeorgieva from "assets/img/examples/mariya-georgieva.jpg";
-import clemOnojegaw from "assets/img/examples/clem-onojegaw.jpg";
-import darrenColeshill from "assets/img/examples/darren-coleshill.jpg";
-import avatar from "assets/img/faces/avatar.jpg";
-import marc from "assets/img/faces/marc.jpg";
-import kendall from "assets/img/faces/kendall.jpg";
-import cardProfile2Square from "assets/img/faces/card-profile2-square.jpg";
+
 
 import profilePageStyle from "assets/jss/material-kit-pro-react/views/profilePageStyle.jsx";
 
@@ -50,6 +41,7 @@ import FollowUser from 'Custom/components/profile/followUser'
 import Following from 'Custom/components/profile/following'
 import Tweets from 'Custom/components/profile/tweets'
 import Chat from 'Custom/components/profile/Chat'
+import Interest from 'Custom/components/profile/interest.js'
 import {fetchProfileUser} from 'actions/action'
 
 class ProfilePage extends React.Component {
@@ -84,6 +76,7 @@ class ProfilePage extends React.Component {
     const imageUrl=canEdit?this.props.user.user.avatar:this.props.user.profileUser.avatar
     const bio=canEdit?this.props.user.user.bio:this.props.user.profileUser.bio
    const loggedIn=this.props.user.loggedIn
+   const common_interest=this.props.user.common_interest
     return (
       <div key={this.props.match.params.id}>
 
@@ -120,59 +113,120 @@ class ProfilePage extends React.Component {
             {user.bio}
               </p>
             </div>
-            <div className={classes.profileTabs}>
+            <div className={classes.profileTabs}>{
+              common_interest.length>0?
               <NavPills
-                alignCenter
-                color="success"
-                tabs={[
-                  {
-                    tabButton: "Reviewed Items",
-                    tabIcon: Palette,
-                    tabContent: (
-                      <GridContainer>
-                        <GridItem
-                          xs={12}
-                          sm={12}
-                          md={10}
-                          className={classes.gridItem}
-                        >
-                          <h4 className={classes.title}>Latest Reviews</h4>
-                          <GridContainer className={classes.collections}>
-                          {user.reviews&&user.reviews.map((review,idx)=><ReviewCard key={idx} classes={classes} review={review}/>)}
+              alignCenter
+              color="success"
+              tabs={[
+                {
+                  tabButton: "Reviewed Items",
+                  tabIcon: Palette,
+                  tabContent: (
+                    <GridContainer>
+                    <GridItem
+                    xs={12}
+                    sm={12}
+                    md={10}
+                    className={classes.gridItem}
+                    >
+                    <h4 className={classes.title}>Latest Reviews</h4>
+                    <GridContainer className={classes.collections}>
+                    {user.reviews&&user.reviews.map((review,idx)=><ReviewCard key={idx} classes={classes} review={review}/>)}
 
-                      </GridContainer>
-                      </GridItem>
+                    </GridContainer>
+                    </GridItem>
+                    </GridContainer>
+                  )
+                },
+                {
+                  tabButton: "Following",
+                  tabIcon: People,
+                  tabContent: (
+                    <div>
+                    <GridContainer justify="center">
+                    <GridItem xs={12} sm={1} md={1}>
+                    </GridItem>
+                    <GridItem xs={12} sm={11} md={11}>
+                    <GridContainer >
+                    {user.followings&&user.followings.map((following,idx)=><Following key={following.id} following={following}/>)}
+                    </GridContainer>
+                    </GridItem>
+                    </GridContainer>
+                    </div>
+                  )
+                },
+                {
+                  tabButton: "Tweets",
+                  tabIcon: Camera,
+                  tabContent: (
+                    <GridContainer >
+                    {user.tweets&&user.tweets.map((tweet,idx)=><Tweets key={idx} tweet={tweet}/>)}
+                    </GridContainer>
+                  )
+                },{
+                  tabButton: "Match",
+                  tabIcon: InsertChart,
+                  tabContent: (
+                    <GridContainer >
+                  {common_interest.length>0&&common_interest.map((interest,idx)=><Interest key={idx} profileUser={this.props.user.profileUser} interest={interest}/>)}
+                    </GridContainer>
+                  )
+                }
+              ]}
+              />:  <NavPills
+                  alignCenter
+                  color="success"
+                  tabs={[
+                    {
+                      tabButton: "Reviewed Items",
+                      tabIcon: Palette,
+                      tabContent: (
+                        <GridContainer>
+                          <GridItem
+                            xs={12}
+                            sm={12}
+                            md={10}
+                            className={classes.gridItem}
+                          >
+                            <h4 className={classes.title}>Latest Reviews</h4>
+                            <GridContainer className={classes.collections}>
+                            {user.reviews&&user.reviews.map((review,idx)=><ReviewCard key={idx} classes={classes} review={review}/>)}
+
                         </GridContainer>
-                    )
-                  },
-                  {
-                    tabButton: "Following",
-                    tabIcon: People,
-                    tabContent: (
-                      <div>
-                        <GridContainer justify="center">
-                        <GridItem xs={12} sm={1} md={1}>
-                         </GridItem>
-                          <GridItem xs={12} sm={11} md={11}>
-                            <GridContainer >
-                        {user.followings&&user.followings.map((following,idx)=><Following key={following.id} following={following}/>)}
-                             </GridContainer>
+                        </GridItem>
+                          </GridContainer>
+                      )
+                    },
+                    {
+                      tabButton: "Following",
+                      tabIcon: People,
+                      tabContent: (
+                        <div>
+                          <GridContainer justify="center">
+                          <GridItem xs={12} sm={1} md={1}>
                            </GridItem>
+                            <GridItem xs={12} sm={11} md={11}>
+                              <GridContainer >
+                          {user.followings&&user.followings.map((following,idx)=><Following key={following.id} following={following}/>)}
+                               </GridContainer>
+                             </GridItem>
+                          </GridContainer>
+                        </div>
+                      )
+                    },
+                    {
+                      tabButton: "Tweets",
+                      tabIcon: Camera,
+                      tabContent: (
+                        <GridContainer >
+                        {user.tweets&&user.tweets.map((tweet,idx)=><Tweets key={idx} tweet={tweet}/>)}
                         </GridContainer>
-                      </div>
-                    )
-                  },
-                  {
-                    tabButton: "Tweets",
-                    tabIcon: Camera,
-                    tabContent: (
-                      <GridContainer >
-                      {user.tweets&&user.tweets.map((tweet,idx)=><Tweets key={idx} tweet={tweet}/>)}
-                      </GridContainer>
-                    )
-                  }
-                ]}
-              />
+                      )
+                    }
+                  ]}
+                />
+            }
             </div>
             <Clearfix />
           </div>

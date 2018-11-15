@@ -46,22 +46,28 @@ class  Custom_Pop_Show_Detail extends React.Component {
 
       <div className={`${classes.projects} ${classes.projects4}`}>
         <div className={classes.container}>
-            <div className={classes.textCenter}>
-              <h1 style={{fontWeight:"400"}}>{currentItem.title}{currentItem.name}</h1>
-            </div>
-          <GridContainer>
+        <div className={classes.textCenter}>
+        <h1 >{currentItem.title}{currentItem.name}</h1>
+        </div>
+          <GridContainer >
+            <GridItem xs={12} sm={1} md={1} lg={1}>
+            </GridItem>
 
-          <GridItem xs={12} sm={5} md={5} lg={6}>
+          <GridItem xs={12} sm={6} md={6} lg={6} className={classes.mrAuto}>
             <Card blog plain>
-              <CardHeader image plain>
+              <CardHeader image plain >
                 <a href={currentItem.homepage} target="_blank">
-                  <img src={`https://image.tmdb.org/t/p/w500/${currentItem.poster_path}`} alt="..." />
+                  <img src={`https://image.tmdb.org/t/p/w400/${currentItem.poster_path}`} alt="..."
+                   style={{ maxHeight: "600px",width:"auto" }}/>
                 </a>
                 <div
                   className={classes.coloredShadow}
+
                   style={{
-                    backgroundImage: `url(${`https://image.tmdb.org/t/p/w500/${currentItem.poster_path}`})`,
-                    opacity: "1"
+                    backgroundImage: `url(${`https://image.tmdb.org/t/p/w400/${currentItem.poster_path}`})`,
+                    opacity: "1",
+                    maxHeight: "650px",
+                    width:"auto"
                   }}
                 />
               </CardHeader>
@@ -69,8 +75,9 @@ class  Custom_Pop_Show_Detail extends React.Component {
             </Card>
           </GridItem>
 
-            <GridItem xs={12} sm={5} md={5} className={classes.mrAuto}>
+            <GridItem xs={12} sm={5} md={5} className={classes.mlAuto}>
             <br />
+
               <InfoArea
                 className={classes.info4}
                 title={`Rating:${currentItem.vote_average}`}
@@ -107,13 +114,7 @@ class  Custom_Pop_Show_Detail extends React.Component {
                 iconColor="primary"
               />
 
-              <InfoArea
-                className={classes.info4}
-                title="Production Companies"
-                description={companies}
-                icon={Language}
-                iconColor="primary"
-              />
+
               <div>
 
 

@@ -35,13 +35,12 @@ class Custom_Review extends React.Component {
     const selfReview=this.props.tv_movies&&this.props.user.user&&this.props.tv_movies.currentItemReviews.filter(review=>review.user.id===this.props.user.user.id)
   console.log(selfReview);
     return (
-      <div className="cd-section" {...rest} style={{"marginTop":"70px"}} >
+      <div className="cd-section" {...rest} style={{"marginTop":"10px"}} >
         {/* Contact us 1 START */}
 
           <div className={classes.container}  >
             <GridContainer >
-              <GridItem xs={12} sm={1} md={1}>
-              </GridItem>
+              
               <GridItem xs={12} sm={10} md={10}>
                 {selfReview&&selfReview.length>0?
                 <Card style={{"textAlign":"center"}}>
@@ -53,7 +52,7 @@ class Custom_Review extends React.Component {
 
                 </CardBody>
               </Card>
-                  : <ReviewFormModal tv_movies={tv_movies} user={user} submitReview={submitReview}/>}
+                  : <ReviewFormModal tv_movies={tv_movies} user={user} submitReview={submitReview} type={this.props.type}/>}
 
               </GridItem>
               <GridItem xs={12} sm={1} md={1}>

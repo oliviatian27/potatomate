@@ -29,9 +29,9 @@ class Friends extends React.Component {
     const { friendsList,classes, ...rest } = this.props;
     return (
 
-      <div className={classes.container} style={{marginTop:"5%",marginBottom:"20px", minHeight:"700px",textAlign:"center"}}>
+      <div className={classes.container} style={{marginTop:"5%",marginBottom:"20px",minHeight:"890px",textAlign:"center"}}>
       <div style={{padding:"20px"}}>
-      {friendsList.length>0?<h1>Congrats!You get {friendsList.length} matched friends</h1>:<h1>You get 0 friends now,go review and get more friends :)</h1>}
+      {friendsList.length>0?<h1>Congrats!You have {friendsList.length} matched friends</h1>:<h1>You have 0 friends now,review and get more friends :)</h1>}
       </div>
 
         <GridContainer  >

@@ -57,7 +57,7 @@ class PresentationPage extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>
                 <h2 className={classes.title}>
-                  A Place for You to Share and Discover New Movies and Tv Shows
+                  A Place for You to Share and Discover New Movies and TV Shows
                 </h2>
               </GridItem>
             </GridContainer>

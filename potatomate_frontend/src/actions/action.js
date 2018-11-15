@@ -1,5 +1,5 @@
 import { API_ROOT, HEADERS } from 'Custom/data';
-const API_KEY=process.env.REACT_APP_API_KEY;
+const API_KEY="88fdbb927487aed9f71408214ac83e55";
 const API_BACK_END="http://localhost:8000/api/v1"
 
 export function updateMovie(obj){
@@ -123,8 +123,9 @@ export function submitReview(obj,share) {
     .then(res=>res.json())
     .then(data=>{
        dispatch(updateReview(data))
+       console.log(data)
        if (share) {
-         dispatch(postTweet({image:obj.image,content:obj.content,user_id:obj.user_id}))
+         dispatch(postTweet({image:obj.image,content:obj.content,user_id:obj.user_id,tvmovie_id:data.tvmovie.id}))
        }
     })
   }
@@ -292,6 +293,12 @@ export const setConversation=(obj)=>{
     payload:obj
   }
 }
+export const setCommonInterest=(array)=>{
+  return {
+    type:"SET_COMMON_INTEREST",
+    payload:array
+  }
+}
 
 export const fetchConversation=(recipient_id)=>{
       return (dispatch)=>{
@@ -310,6 +317,12 @@ export const fetchConversation=(recipient_id)=>{
           .then(json=>{
             dispatch (setConversation(json))
           })
+          fetch(`${API_BACK_END}/find_common_interest/${json.user.id}/${recipient_id}`)
+          .then(res=>res.json())
+          .then(json=>{
+            dispatch(setCommonInterest(json.common_interest))
+          })
+
         })
        }
 }

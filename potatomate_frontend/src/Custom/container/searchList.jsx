@@ -15,7 +15,7 @@ import {connect} from 'react-redux'
 function SearchList({ ...props }) {
   const { classes,list, ...rest } = props;
   return (
-    <div className="cd-section" {...rest}>
+    <div className="cd-section" {...rest} style={{minHeight:"800px"}}>
       {/* Blogs 1 START */}
       <div className={classes.blog}>
         <div className={classes.container}>

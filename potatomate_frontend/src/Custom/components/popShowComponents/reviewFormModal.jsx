@@ -158,7 +158,7 @@ class ReviewFormModal extends React.Component {
                 value="share"
               />
             }
-            label="share to my twitter"
+            label="share to my feed"
           />
 
           </DialogContent>

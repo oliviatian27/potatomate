@@ -42,11 +42,11 @@ class User < ApplicationRecord
 
   end
 
-  def find_detail(friend)
+  def find_interest_detail(friend)
     common_movies = self.find_common_movie(friend)
     result=[]
     common_movies.each{|movie|
-      result<< {tmdbid:movie.tmdbid,title:movie.name,selfRating:self.reviews.find_by(tvmovie_id:movie.id).rating,
+      result<< {tvmovie:movie,selfRating:self.reviews.find_by(tvmovie_id:movie.id).rating,
                         friendRating:friend.reviews.find_by(tvmovie_id:movie.id).rating}
     }
     result

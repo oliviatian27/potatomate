@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create,:show,:update,:find_friends]
+  skip_before_action :authorized, only: [:create,:show,:update,:find_friends,:find_common_interest]
 
     def profile
       render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -34,6 +34,12 @@ class Api::V1::UsersController < ApplicationController
       @user=User.find(params[:id])
       @friends=@user.find_friend
       render json:@friends
+    end
+
+    def find_common_interest
+      @user=User.find(params[:user_id])
+      @friend=User.find(params[:friend_id])
+      render json:{common_interest:@user.find_interest_detail(@friend)  }
     end
 
     private

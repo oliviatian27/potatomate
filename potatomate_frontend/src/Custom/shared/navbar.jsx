@@ -66,8 +66,12 @@ class SectionNavbars extends React.Component {
 
   handleSearch=(e)=>{
     e.preventDefault()
-    this.props.searchItem(this.state.searchInput);
-    this.props.history.push('/search')
+    if (this.state.searchInput.length>0) {
+
+      this.props.searchItem(this.state.searchInput);
+      this.props.history.push('/search')
+      this.setState({searchInput:''})
+    }
   }
 
   handleDropDown=(e)=>{
@@ -128,7 +132,7 @@ class SectionNavbars extends React.Component {
                       className={classes.navLink}
                       color="transparent"
                     >
-                      Twitter
+                      News Feed
                     </Button>
                   </ListItem>
                   <ListItem className={classes.listItem}>

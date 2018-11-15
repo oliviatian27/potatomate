@@ -20,11 +20,12 @@ import cardsStyle from "assets/jss/material-kit-pro-react/views/componentsSectio
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import imagesStyles from "assets/jss/material-kit-pro-react/imagesStyles.jsx";
-
+import Star from "@material-ui/icons/Star";
 import { cardTitle } from "assets/jss/material-kit-pro-react.jsx";
 import Moment from 'react-moment';
 import {connect} from 'react-redux'
 import {handleFavorite} from 'actions/action'
+import { Link } from 'react-router-dom';
 const newStyle={
   ...style,
   ...cardsStyle,
@@ -92,29 +93,78 @@ class Twitter extends React.Component {
           }
 
       />
-      <GridItem
+      {this.props.tweet.tvmovie?<GridItem
         xs={12}
-        sm={8}
-        md={8}
+        sm={10}
+        md={10}
         className={`${classes.mlAuto} ${classes.mrAuto}`}
        style={{marginBottom:"30px"}}
       >
+      <Link to={`/${tweet.tvmovie.media_type}/${tweet.tvmovie.tmdbid}`} >
+      <Card style={{backgroundColor:"#e0e4e0"}}>
+      <GridContainer>
+      <GridItem
+        xs={12}
+        sm={6}
+        md={6}
+        className={classes.textCenter}
 
-      <CardHeader image plain>
-            <img
-            src={tweet.image}
-            alt="Card-img-cap"
-            />
-            <div
-              className={classes.coloredShadow}
-              style={{
-                backgroundImage: `url(${tweet.image})`,
-                opacity: "1"
-              }}
-            />
-
-      </CardHeader>
+      >
+      <h2>{tweet.tvmovie.name}</h2>
+      <h3>Rating:{tweet.tvmovie.rating_average}</h3>
+       {[...Array(Math.round(tweet.tvmovie.rating_average/2))].map((e, i) => <span  key={i}><Star nativeColor="#f98f3e"/></span>)}
       </GridItem>
+      <GridItem
+        xs={12}
+        sm={6}
+        md={6}
+        className={`${classes.mlAuto} ${classes.mrAuto}`}
+        style={{padding:"30px"}}
+      >
+
+        <CardHeader image plain>
+              <img
+              src={tweet.image}
+              alt="Card-img-cap"
+              />
+              <div
+                className={classes.coloredShadow}
+                style={{
+                  backgroundImage: `url(${tweet.image})`,
+                  opacity: "1"
+                }}
+              />
+
+        </CardHeader>
+
+      </GridItem>
+      </GridContainer>
+      </Card>
+      </Link>
+      </GridItem>: <GridItem
+          xs={12}
+          sm={8}
+          md={8}
+          className={`${classes.mlAuto} ${classes.mrAuto}`}
+         style={{marginBottom:"30px"}}
+        >
+
+        <CardHeader image plain>
+              <img
+              src={tweet.image}
+              alt="Card-img-cap"
+              />
+              <div
+                className={classes.coloredShadow}
+                style={{
+                  backgroundImage: `url(${tweet.image})`,
+                  opacity: "1"
+                }}
+              />
+
+        </CardHeader>
+        </GridItem>}
+
         </CardBody>
       </Card>
 

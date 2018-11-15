@@ -7,6 +7,7 @@ const initialState={
   friendsList:[],
   profileUser:{},
   conversation:{},
+  common_interest:[]
 }
 
 export default function user(state=initialState,action){
@@ -28,6 +29,8 @@ export default function user(state=initialState,action){
       return {...state,user:{...state.user,followings:state.user.followings.concat(action.payload)}}
     case 'SET_CONVERSATION':
       return {...state,conversation:action.payload}
+    case 'SET_COMMON_INTEREST':
+     return {...state,common_interest:action.payload}
     case 'NOTIFY_NEW_MESSAGE':
         toast.success(`${action.payload.user.username}:${action.payload.content}`);
         const messages=state.user.allMessages.filter(message=>message.user.id!==action.payload.user.id)

@@ -21,7 +21,7 @@ class RadioExample extends React.Component{
     return (
       <div>
           <div style={{marginBottom:"20px"}}>
-            {Genres[media_type].map((genre,idx)=><Button type="button" className="ExploreButton" key={idx} color="dribbble" name={genre.id} onClick={this.props.handleClick}>{genre.name}</Button>)}
+            {Genres[media_type].map((genre,idx)=><Button type="button" className="ExploreButton" key={idx} color="success" name={genre.id} onClick={this.props.handleClick}>{genre.name}</Button>)}
 
           </div>
           <div style={{marginBottom:"20px"}}>

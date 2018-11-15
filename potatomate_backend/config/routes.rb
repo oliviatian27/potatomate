@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       get '/findfriends/:id',to: 'users#find_friends'
       get '/followed_tweets/:id',to:'tweets#followed_tweets'
+      get 'find_common_interest/:user_id/:friend_id',to:'users#find_common_interest'
     end
   end
 end
