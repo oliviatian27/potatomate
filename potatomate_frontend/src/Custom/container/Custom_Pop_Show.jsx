@@ -43,7 +43,7 @@ class Custom_Pop_Show extends React.Component {
     return (
       <div >
       <Parallax
-        image="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-0.3.5&s=ebac1ec069fac6c41b6867286eaf1e66&auto=format&fit=crop&w=1525&q=80"
+        image="https://res.cloudinary.com/oliviatian/image/upload/v1542298849/jeshoots-com-606648-unsplash.jpg"
 
         className={classes.parallax}
       />

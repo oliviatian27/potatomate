@@ -22,7 +22,7 @@ function Interest(props) {
   return (
     <GridItem xs={12} sm={12} md={4} >
 
-      <Card style={{backgroundColor:"#f6e7ea"}}>
+      <Card style={{backgroundColor:"#e2e0e1"}}>
         <CardBody color>
           <h3 className={classes.cardTitle}>{interest.tvmovie.name}</h3>
           <h4 className={classes.cardTitle}>Your Rating</h4>

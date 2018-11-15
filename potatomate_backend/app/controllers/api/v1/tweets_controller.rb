@@ -20,7 +20,7 @@ class Api::V1::TweetsController < ApplicationController
 
   def followed_tweets
      @user=User.find(params[:id])
-     @tweets=Tweet.where(user_id: @user.followings.pluck(:id))
+     @tweets=Tweet.where(user_id: @user.followings.pluck(:id)).order("created_at DESC")
      render json: @tweets,each_serializer:TweetSerializer
   end
 

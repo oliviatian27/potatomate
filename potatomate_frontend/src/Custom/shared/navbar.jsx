@@ -70,8 +70,8 @@ class SectionNavbars extends React.Component {
 
       this.props.searchItem(this.state.searchInput);
       this.props.history.push('/search')
-      this.setState({searchInput:''})
     }
+    this.setState({searchInput:''})
   }
 
   handleDropDown=(e)=>{
@@ -103,7 +103,7 @@ class SectionNavbars extends React.Component {
 
               brand="Potato Mate"
               fixed
-              color="white"
+            
               links={
                 <List className={classes.list + " " + classes.mlAuto}>
                 <div className={classes.mlAuto}>
@@ -132,7 +132,7 @@ class SectionNavbars extends React.Component {
                       className={classes.navLink}
                       color="transparent"
                     >
-                      News Feed
+                       Feed
                     </Button>
                   </ListItem>
                   <ListItem className={classes.listItem}>

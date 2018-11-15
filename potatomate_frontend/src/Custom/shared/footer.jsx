@@ -56,7 +56,7 @@ class footer extends React.Component {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/"
+                      href="https://github.com/oliviatian27"
                       className={classes.block}
                     >
                       Contact Us
@@ -64,35 +64,20 @@ class footer extends React.Component {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation"
+                      href="https://github.com/oliviatian27"
                       className={classes.block}
                     >
-                      About us
+                      blog
                     </a>
                   </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="//blog.creative-tim.com/"
-                      className={classes.block}
-                    >
-                      Blog
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/license"
-                      className={classes.block}
-                    >
-                      Licenses
-                    </a>
-                  </ListItem>
+
                 </List>
               </div>
               <div className={classes.rightLinks}>
                 <ul>
                   <li>
                     <Button
-                      href="https://twitter.com/CreativeTim"
+                      href="https://github.com/oliviatian27"
                       color="twitter"
                       justIcon
                       simple
@@ -102,7 +87,7 @@ class footer extends React.Component {
                   </li>
                   <li>
                     <Button
-                      href="https://dribbble.com/creativetim"
+                      href="https://github.com/oliviatian27"
                       color="dribbble"
                       justIcon
                       simple
@@ -112,7 +97,7 @@ class footer extends React.Component {
                   </li>
                   <li>
                     <Button
-                      href="https://instagram.com/CreativeTimOfficial"
+                      href="https://github.com/oliviatian27"
                       color="instagram"
                       justIcon
                       simple

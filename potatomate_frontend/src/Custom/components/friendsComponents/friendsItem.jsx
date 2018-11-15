@@ -86,7 +86,7 @@ class SectionCards extends React.Component {
     return (
 
 
-        <GridItem xs={12} sm={6} md={6} lg={4} >
+        <GridItem xs={12} sm={6} md={3} lg={3} >
           <div className={classes.rotatingCardContainer} >
             <Card background className={classes.cardRotate} >
               <div
@@ -104,7 +104,7 @@ class SectionCards extends React.Component {
               <div
                 className={`${classes.back} ${classes.wrapperBackground}`}
                 style={{
-                  backgroundImage: `url(${blog2})`
+                  backgroundImage: `url(https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c8df2caeb47cf27eae792735019e072f&auto=format&fit=crop&w=2100&q=80)`
                 }}
               >
                 <CardBody background className={classes.cardBodyRotate}>

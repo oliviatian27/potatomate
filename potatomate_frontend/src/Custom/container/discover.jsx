@@ -41,7 +41,7 @@ class Discover extends React.Component {
     return (
       <div>
       <Parallax
-        image="https://images.unsplash.com/photo-1506512534708-3737d46bffe1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c50522d4496abeea544e9d3401d0143c&auto=format&fit=crop&w=1950&q=80"
+        image="https://images.unsplash.com/photo-1534236874052-bef0ac071a50?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=995bc6a8ecd965de85fdf788f7528cd2&auto=format&fit=crop&w=1950&q=80"
 
         className={classes.parallax}
       />

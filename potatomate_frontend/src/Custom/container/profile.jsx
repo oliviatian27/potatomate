@@ -9,7 +9,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
+import MovieFilter from "@material-ui/icons/MovieFilter";
 import People from "@material-ui/icons/People";
 import Add from "@material-ui/icons/Add";
 import InsertChart from "@material-ui/icons/InsertChart";
@@ -120,8 +120,8 @@ class ProfilePage extends React.Component {
               color="success"
               tabs={[
                 {
-                  tabButton: "Reviewed Items",
-                  tabIcon: Palette,
+                  tabButton: "Reviews",
+                  tabIcon: MovieFilter,
                   tabContent: (
                     <GridContainer>
                     <GridItem
@@ -157,7 +157,7 @@ class ProfilePage extends React.Component {
                   )
                 },
                 {
-                  tabButton: "Tweets",
+                  tabButton: "Posts",
                   tabIcon: Camera,
                   tabContent: (
                     <GridContainer >
@@ -179,8 +179,8 @@ class ProfilePage extends React.Component {
                   color="success"
                   tabs={[
                     {
-                      tabButton: "Reviewed Items",
-                      tabIcon: Palette,
+                      tabButton: "Reviews",
+                      tabIcon: MovieFilter,
                       tabContent: (
                         <GridContainer>
                           <GridItem
@@ -216,7 +216,7 @@ class ProfilePage extends React.Component {
                       )
                     },
                     {
-                      tabButton: "Tweets",
+                      tabButton: "Posts",
                       tabIcon: Camera,
                       tabContent: (
                         <GridContainer >

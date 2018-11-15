@@ -127,7 +127,7 @@ class  Custom_Pop_Show_Detail extends React.Component {
          <Overview currentItem={currentItem}/>
          <div className={classes.container}>
          <div className={`${classes.title} ${classes.textCenter}`}>
-           <h2>People who like this {type} also like </h2>
+           <h2>People who like this {type==="tv"?"TV Show":"Movie"} also like </h2>
          </div>
            <GridContainer>
 

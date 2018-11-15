@@ -13,4 +13,11 @@ class UserSerializer < ActiveModel::Serializer
        {content:m.content,user:User.find(m.user_id)}
      end
   end
+
+  def tweets
+    object.tweets.order("created_at DESC")
+  end
+  def reviews
+    object.reviews.order("created_at DESC")
+  end
 end

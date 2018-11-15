@@ -38,7 +38,7 @@ class selectTwitter extends React.Component{
         <CardBody>
       <GridContainer justify="center">
         <GridItem xs={12} sm={8} md={8} lg={8}>
-          <h4> Select people you're following or all the tweets </h4>
+          <h4> Select all the posts or people you're following  </h4>
           <FormControl
             fullWidth
             className={classes.selectFormControl}>
@@ -62,7 +62,7 @@ class selectTwitter extends React.Component{
                   selected: classes.selectMenuItemSelected
                 }}
                 value="all">
-                All the twitters
+                All the posts
               </MenuItem>
               <MenuItem
                 classes={{
