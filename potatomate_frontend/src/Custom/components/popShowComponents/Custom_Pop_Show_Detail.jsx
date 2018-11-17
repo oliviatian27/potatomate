@@ -102,7 +102,7 @@ class  Custom_Pop_Show_Detail extends React.Component {
               <InfoArea
                 className={classes.info4}
                 title={type==="movie"?"runtime":"Last Air Date"}
-                description={currentItem.runtime||currentItem.last_air_date}
+                description={currentItem.runtime?`${currentItem.runtime} min`:currentItem.last_air_date}
                 icon={Schedule}
                 iconColor="primary"
               />

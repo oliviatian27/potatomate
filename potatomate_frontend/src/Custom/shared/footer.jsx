@@ -46,7 +46,7 @@ class footer extends React.Component {
             <div>
               <div className={classes.left}>
                 <a
-                  href="https://www.creative-tim.com/product/material-kit-pro-react"
+                  href="https://github.com/oliviatian27"
                   className={classes.footerBrand}
                 >
                   Potato Mate
@@ -73,40 +73,7 @@ class footer extends React.Component {
 
                 </List>
               </div>
-              <div className={classes.rightLinks}>
-                <ul>
-                  <li>
-                    <Button
-                      href="https://github.com/oliviatian27"
-                      color="twitter"
-                      justIcon
-                      simple
-                    >
-                      <i className="fab fa-twitter" />
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      href="https://github.com/oliviatian27"
-                      color="dribbble"
-                      justIcon
-                      simple
-                    >
-                      <i className="fab fa-dribbble" />
-                    </Button>
-                  </li>
-                  <li>
-                    <Button
-                      href="https://github.com/oliviatian27"
-                      color="instagram"
-                      justIcon
-                      simple
-                    >
-                      <i className="fab fa-instagram" />
-                    </Button>
-                  </li>
-                </ul>
-              </div>
+
             </div>
           }
         />

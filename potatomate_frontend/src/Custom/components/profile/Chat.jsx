@@ -66,7 +66,7 @@ class Chat extends Component {
         handleNewUserMessage={this.handleNewUserMessage}
         profileAvatar={this.props.recipient.avatar}
         title={`Say Hi to ${this.props.recipient.username} Now :)`}
-        subtitle="some thing"
+        
         launcher={handleToggle => this.getCustomLauncher(handleToggle)}
       />
       </div>

@@ -29,12 +29,13 @@ class Friends extends React.Component {
     const { friendsList,classes, ...rest } = this.props;
     return (
 
-      <div className={classes.container} style={{marginTop:"5%",marginBottom:"20px",minHeight:"890px",textAlign:"center"}}>
-      <div style={{padding:"20px"}}>
-      {friendsList.length>0?<h1>Congrats!You have {friendsList.length} matched friends</h1>:<h1>You have 0 friends now,review and get more friends :)</h1>}
+      <div className={classes.container} style={{marginTop:"2%",minHeight:"960px",textAlign:"center",background:"white"}}>
+
+      <div style={{paddingTop:"60px"}}>
+      {friendsList.length>0?<h1>Congrats!{" "}You have {friendsList.length} matched friends</h1>:<h1>You have 0 friends now,review and get more friends :)</h1>}
       </div>
 
-        <GridContainer  >
+        <GridContainer style={{padding:"50px"}} >
         {friendsList.map(friend=><FriendsItem key={friend.user.id} friend={friend}/>)}
 
          </GridContainer>

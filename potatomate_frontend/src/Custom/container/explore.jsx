@@ -51,12 +51,12 @@ class Explore extends React.Component {
       <div className="cd-section" {...rest}>
         {/* Blogs 1 START */}
         <div className={classes.blog} >
-          <div className={classes.container} style={{textAlign:"center",background:"white",padding:"40px"}}>
+          <div className={classes.container} style={{textAlign:"center",background:"white"}}>
             <div style={{padding:"30px"}}>
             <h1 >Discover more {this.props.match.params.media_type=="tv"?"TV Shows" :"Movies"}</h1>
             </div>
               <ExploreButton handleClick={this.handleClick} handleRadio={this.handleRadio} sortType={this.state.sortType} media_type={this.props.match.params.media_type} />
-              <GridContainer>
+              <GridContainer style={{paddingLeft:"40px",paddingRight:"40px"}}>
               {originalMovieList.pop&&originalMovieList.pop.map(item=>< ExploreItem key={item.id} item={item} media_type={this.props.match.params.media_type}/>)}
               {originalTvList.pop&&originalTvList.pop.map(item=>< ExploreItem key={item.id} item={item} media_type={this.props.match.params.media_type}/>)}
              </GridContainer>

@@ -16,7 +16,7 @@ class ReviewCard extends React.Component{
   const { classes } = this.props;
   return (
 
-    <GridItem xs={12} sm={12} md={6}>
+    <GridItem xs={12} sm={12} md={6} >
     <Card
     background
     style={{
