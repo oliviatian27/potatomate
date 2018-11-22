@@ -26,15 +26,15 @@ import profileImage from "assets/img/faces/avatar.jpg";
 import { connect } from 'react-redux';
 import {searchItem,fetchCurrentUser,logOutUser,notifyNewMessage}  from  'actions/action';
 import bg4 from 'assets/img/bg4.jpg'
-import SignUp from 'Custom/components/login/signup'
-import Login from 'Custom/components/login/login'
+import SignUp from '../components/login/signup'
+import Login from '../components/login/login'
 import { ActionCable } from 'react-actioncable-provider';
 import Popover from "@material-ui/core/Popover";
 import popoverStyles from "assets/jss/material-kit-pro-react/popoverStyles.jsx";
 
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import MessageContainer from 'Custom/components/navbar'
+import MessageContainer from '../components/navbar'
 
 class SectionNavbars extends React.Component {
   state={
@@ -103,7 +103,7 @@ class SectionNavbars extends React.Component {
 
               brand="Potato Mate"
               fixed
-            
+
               links={
                 <List className={classes.list + " " + classes.mlAuto}>
                 <div className={classes.mlAuto}>
@@ -222,14 +222,14 @@ class SectionNavbars extends React.Component {
                 </List>
               }
             />
+           {this.props.user.loggedIn&&<ActionCable
+               key={this.props.user.user&&this.props.user.user.id}
+               channel={{ channel: 'ConversationsChannel', user: this.props.user.user&&this.props.user.user.id }}
+               onReceived={(res)=>{
+                 this.props.notifyNewMessage(res)
+               }}
+             />}
 
-            <ActionCable
-                key={this.props.user.user&&this.props.user.user.id}
-                channel={{ channel: 'ConversationsChannel', user: this.props.user.user&&this.props.user.user.id }}
-                onReceived={(res)=>{
-                  this.props.notifyNewMessage(res)
-                }}
-              />
 
 
       </div>

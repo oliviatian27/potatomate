@@ -1,10 +1,7 @@
 import React from "react";
 // @material-ui/icons
-import Check from "@material-ui/icons/Check";
-import Warning from "@material-ui/icons/Warning";
-// core components
-import SnackbarContent from "components/Snackbar/SnackbarContent.jsx";
-import Clearfix from "components/Clearfix/Clearfix.jsx";
+
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

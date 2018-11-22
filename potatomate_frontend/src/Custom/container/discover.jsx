@@ -19,9 +19,9 @@ import GridItem from "components/Grid/GridItem.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 
-import BroadcastForm from 'Custom/components/discover/form'
-import SelectTwitter from 'Custom/components/discover/selectTwitter'
-import Twitter from 'Custom/components/discover/twitter'
+import BroadcastForm from '../components/discover/form'
+import SelectTwitter from '../components/discover/selectTwitter'
+import Twitter from '../components/discover/twitter'
 import twitter from "assets/img/twitter.jpg";
 import {connect} from 'react-redux'
 import {fetchOriginalTweets} from 'actions/action'

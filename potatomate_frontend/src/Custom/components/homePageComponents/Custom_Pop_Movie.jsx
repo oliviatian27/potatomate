@@ -44,7 +44,7 @@ class PopMovie extends React.Component {
 
   render (){
     const { classes,originalMovieList,originalTvList, ...rest } = this.props;
-      console.log(this.props);
+
     return (
       <div className="cd-section" {...rest}>
       {/* Project 1 START */}

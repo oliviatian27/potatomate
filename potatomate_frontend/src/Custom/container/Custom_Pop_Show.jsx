@@ -21,7 +21,7 @@ import Button from "components/CustomButtons/Button.jsx";
 import presentationStyle from "assets/jss/material-kit-pro-react/views/presentationStyle.jsx";
 import profilePageStyle from "assets/jss/material-kit-pro-react/views/profilePageStyle.jsx";
 
-import Custom_Pop_Show_Detail from 'Custom/components/popShowComponents/Custom_Pop_Show_Detail'
+import Custom_Pop_Show_Detail from '../components/popShowComponents/Custom_Pop_Show_Detail'
 
 import { connect } from 'react-redux';
 import {fetchItem}  from  'actions/action';

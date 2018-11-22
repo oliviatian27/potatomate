@@ -10,15 +10,10 @@
 /build
 
 #folder
-src/views/
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env
+
 package-lock.json
 
 npm-debug.log*

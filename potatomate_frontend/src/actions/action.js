@@ -1,6 +1,6 @@
-import { API_ROOT, HEADERS } from 'Custom/data';
+import {  HEADERS } from 'Custom/data';
 const API_KEY="88fdbb927487aed9f71408214ac83e55";
-const API_BACK_END="http://localhost:8000/api/v1"
+const API_BACK_END="https://potato-mate.herokuapp.com/api/v1"
 
 export function updateMovie(obj){
   return {
@@ -76,7 +76,7 @@ export function fetchItem(type,id){
          const results=data.results.filter(m=>m.backdrop_path)
          dispatch(updateRecommendations(results))
        })
-      fetch(`http://localhost:8000/api/v1/getitemreviews/${id}`)
+      fetch(`${API_BACK_END}/getitemreviews/${id}`)
       .then(r=>r.json())
       .then(data=>{
         dispatch(fetchItemReview(data))
@@ -112,7 +112,7 @@ export function updateReview(obj) {
 
 export function submitReview(obj,share) {
   return (dispatch)=>{
-    fetch("http://localhost:8000/api/v1/reviews",{
+    fetch(`${API_BACK_END}/reviews`,{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -139,7 +139,7 @@ export function updateFriends(data){
 }
 export function fetchFriends(id){
   return (dispatch)=>{
-    fetch(`http://localhost:8000/api/v1/findfriends/${id}`)
+    fetch(`${API_BACK_END}/findfriends/${id}`)
     .then(res=>res.json())
     .then(data=>{
       dispatch(updateFriends(data))
@@ -155,7 +155,7 @@ export function setCurrentUser(obj){
 }
 export function handleSignUp(obj){
   return (dispatch)=>{
-    fetch("http://localhost:8000/api/v1/signup",{
+    fetch(`${API_BACK_END}/signup`,{
        method:"POST",
        headers:{
          'Accept':'application/json',
@@ -178,7 +178,7 @@ export function handleSignUp(obj){
 
 export function handleLogin(obj){
   return (dispatch)=>{
-    fetch("http://localhost:8000/api/v1/login",{
+    fetch(`${API_BACK_END}/login`,{
        method:"POST",
        headers:{
          'Accept':'application/json',
@@ -192,6 +192,8 @@ export function handleLogin(obj){
          throw res
        }})
     .then(json=>{
+      console.log(json);
+      debugger
       localStorage.setItem('jwt',json.jwt)
       dispatch(setCurrentUser(json.user))
     }).catch(r=>r.json().then(e=>dispatch({type:'FAILED_SIGNUP',payload:e.message})))
@@ -209,6 +211,7 @@ export const fetchCurrentUser=()=>{
     fetch(`${API_BACK_END}/profile`,{
       method:'GET',
       headers:{
+       "Access-Control-Allow-Origin":"*",
         Authorization:`Bearer ${localStorage.getItem('jwt')}`
       }
     }).then(res=>res.json())
@@ -237,7 +240,14 @@ export const setProfileUser=(obj)=>{
 }
 export const fetchProfileUser=(id)=>{
   return (dispatch)=>{
-    fetch(`http://localhost:8000/api/v1/users/${id}`)
+    fetch(`${API_BACK_END}/users/${id}`,{
+      method:"GET",
+      headers:{
+        "Access-Control-Allow-Origin":"*",
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+      }
+    })
     .then(res=>res.json())
     .then(data=>dispatch(setProfileUser(data.user)))
   }
@@ -252,11 +262,11 @@ export const setOriginalTweets=(array)=>{
 export const fetchOriginalTweets=(filter,user_id)=>{
   return (dispatch)=>{
     if (filter==="all") {
-      fetch("http://localhost:8000/api/v1/tweets")
+      fetch(`${API_BACK_END}/tweets`)
       .then(res=>res.json())
       .then(data=>dispatch(setOriginalTweets(data)))
     }else {
-      fetch(`http://localhost:8000/api/v1/followed_tweets/${user_id}`)
+      fetch(`${API_BACK_END}/followed_tweets/${user_id}`)
       .then(res=>res.json())
       .then(data=>dispatch(setOriginalTweets(data)))
     }
@@ -272,7 +282,7 @@ export const updateTweet=(obj)=>{
 
 export const postTweet=(obj)=>{
   return (dispatch)=>{
-    fetch("http://localhost:8000/api/v1/tweets",{
+    fetch(`${API_BACK_END}/tweets`,{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -309,7 +319,7 @@ export const fetchConversation=(recipient_id)=>{
           }
         }).then(res=>res.json())
         .then(json=>{
-          fetch(`${API_ROOT}/conversations`, {
+          fetch(`${API_BACK_END}/conversations`, {
             method: 'POST',
             headers: HEADERS,
             body: JSON.stringify({title:'first',recipient_id:recipient_id,sender_id:json.user.id})
@@ -343,7 +353,7 @@ export const updateFollowings=(obj)=>{
 
 export const followUser=(obj)=>{
   return (dispatch)=>{
-    fetch("http://localhost:8000/api/v1/follows",{
+    fetch(`${API_BACK_END}/follows`,{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -367,7 +377,7 @@ export const updateFavorite=(tweet)=>{
 
 export const handleFavorite=(tweet_id)=>{
   return (dispatch)=>{
-    fetch(`http://localhost:8000/api/v1/tweets/${tweet_id}`,{
+    fetch(`${API_BACK_END}/tweets/${tweet_id}`,{
       method:'PATCH',
       headers:{
         'Accept':'application/json',
@@ -390,7 +400,7 @@ export const updateReviewFavorite=(review)=>{
 
 export const handleReviewFavorite=(review_id)=>{
   return (dispatch)=>{
-    fetch(`http://localhost:8000/api/v1/reviews/${review_id}`,{
+    fetch(`${API_BACK_END}/reviews/${review_id}`,{
       method:'PATCH',
       headers:{
         'Accept':'application/json',

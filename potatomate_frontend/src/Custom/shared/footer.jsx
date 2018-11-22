@@ -9,7 +9,6 @@ import ListItem from "@material-ui/core/ListItem";
 import Header from "components/Header/Header.jsx";
 
 
-import Custom_Pop_Movie from 'Custom/components/homePageComponents/Custom_Pop_Movie'
 
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";

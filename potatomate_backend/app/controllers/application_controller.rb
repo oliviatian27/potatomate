@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   def encode_token(payload)
     # should store secret in env variable
 
-    JWT.encode(payload,Rails.application.secrets.secret)
+    JWT.encode(payload,'secret')
   end
 
   def auth_header
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
       token = auth_header.split(' ')[1]
       # header: { 'Authorization': 'Bearer <token>' }
       begin
-        JWT.decode(token,Rails.application.secrets.secret, true, algorithm: 'HS256')
+        JWT.decode(token,'secret', true, algorithm: 'HS256')
       rescue JWT::DecodeError
         nil
       end
