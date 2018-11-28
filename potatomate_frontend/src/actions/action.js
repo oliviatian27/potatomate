@@ -123,7 +123,7 @@ export function submitReview(obj,share) {
     .then(res=>res.json())
     .then(data=>{
        dispatch(updateReview(data))
-       console.log(data)
+      
        if (share) {
          dispatch(postTweet({image:obj.image,content:obj.content,user_id:obj.user_id,tvmovie_id:data.tvmovie.id}))
        }
@@ -192,8 +192,6 @@ export function handleLogin(obj){
          throw res
        }})
     .then(json=>{
-      console.log(json);
-      debugger
       localStorage.setItem('jwt',json.jwt)
       dispatch(setCurrentUser(json.user))
     }).catch(r=>r.json().then(e=>dispatch({type:'FAILED_SIGNUP',payload:e.message})))
