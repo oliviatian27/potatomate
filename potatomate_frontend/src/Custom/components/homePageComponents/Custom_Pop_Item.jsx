@@ -38,12 +38,9 @@ import Button from "components/CustomButtons/Button.jsx";
 import styles from "assets/jss/material-kit-pro-react/views/componentsSections/sectionCards.jsx";
 
 
-
 import { Link } from 'react-router-dom';
 
 class SectionCards extends React.Component {
-
-
   render() {
     const { classes, media_type,id,vote_average,title,name,poster_path,backdrop_path } = this.props;
     return (

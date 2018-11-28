@@ -36,36 +36,11 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/componentsSections/sectionCards.jsx";
 
-import cardBlog1 from "assets/img/examples/card-blog1.jpg";
-import cardBlog2 from "assets/img/examples/card-blog2.jpg";
-import cardBlog3 from "assets/img/examples/card-blog3.jpg";
-import cardBlog5 from "assets/img/examples/card-blog5.jpg";
-import cardBlog6 from "assets/img/examples/card-blog6.jpg";
-import cardProfile1 from "assets/img/examples/card-profile1.jpg";
-import cardProfile4 from "assets/img/examples/card-profile4.jpg";
-import blog1 from "assets/img/examples/blog1.jpg";
-import blog5 from "assets/img/examples/blog5.jpg";
-import blog6 from "assets/img/examples/blog6.jpg";
-import blog8 from "assets/img/examples/blog8.jpg";
-import avatar from "assets/img/faces/avatar.jpg";
-import christian from "assets/img/faces/christian.jpg";
-import marc from "assets/img/faces/marc.jpg";
-import office1 from "assets/img/examples/office1.jpg";
-import color1 from "assets/img/examples/color1.jpg";
-import color2 from "assets/img/examples/color2.jpg";
-import color3 from "assets/img/examples/color3.jpg";
-
 import Pop_Item from './Custom_Pop_Item'
 
 
 class PopList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeRotate1: "",
-      activeRotate2: ""
-    };
-  }
+
 
   render() {
     const { classes,list,media_type, ...rest } = this.props;

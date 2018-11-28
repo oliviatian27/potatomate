@@ -141,8 +141,6 @@ class  Custom_Pop_Show_Detail extends React.Component {
 
           {currentItemReviews.map(review=> <Reviews review={review} />)}
 
-
-
         </div>
       </div>
       {/* Project 4 END */}
