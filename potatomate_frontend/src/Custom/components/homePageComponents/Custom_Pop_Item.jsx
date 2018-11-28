@@ -37,24 +37,7 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import styles from "assets/jss/material-kit-pro-react/views/componentsSections/sectionCards.jsx";
 
-import cardBlog1 from "assets/img/examples/card-blog1.jpg";
-import cardBlog2 from "assets/img/examples/card-blog2.jpg";
-import cardBlog3 from "assets/img/examples/card-blog3.jpg";
-import cardBlog5 from "assets/img/examples/card-blog5.jpg";
-import cardBlog6 from "assets/img/examples/card-blog6.jpg";
-import cardProfile1 from "assets/img/examples/card-profile1.jpg";
-import cardProfile4 from "assets/img/examples/card-profile4.jpg";
-import blog1 from "assets/img/examples/blog1.jpg";
-import blog5 from "assets/img/examples/blog5.jpg";
-import blog6 from "assets/img/examples/blog6.jpg";
-import blog8 from "assets/img/examples/blog8.jpg";
-import avatar from "assets/img/faces/avatar.jpg";
-import christian from "assets/img/faces/christian.jpg";
-import marc from "assets/img/faces/marc.jpg";
-import office1 from "assets/img/examples/office1.jpg";
-import color1 from "assets/img/examples/color1.jpg";
-import color2 from "assets/img/examples/color2.jpg";
-import color3 from "assets/img/examples/color3.jpg";
+
 
 import { Link } from 'react-router-dom';
 
@@ -63,9 +46,6 @@ class SectionCards extends React.Component {
 
   render() {
     const { classes, media_type,id,vote_average,title,name,poster_path,backdrop_path } = this.props;
-
-
-
     return (
                   <GridItem xs={12} sm={6} md={6} lg={4} >
                   <Link key={id} to={`/${media_type}/${id}`} >
@@ -104,19 +84,3 @@ class SectionCards extends React.Component {
 }
 
 export default withStyles(styles)(SectionCards);
-
-
-// <div>
-//   <Warning>
-//     <Star className={classes.starIcons} />
-//   </Warning>
-//   <Warning>
-//     <Star className={classes.starIcons} />
-//   </Warning>
-//   <Warning>
-//     <Star className={classes.starIcons} />
-//   </Warning>
-//   <Warning>
-//     <Star className={classes.starIcons} />
-//   </Warning>
-// </div>
