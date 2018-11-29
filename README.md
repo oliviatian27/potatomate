@@ -3,7 +3,9 @@ Potato Mate is an app where you can review movies and tv shows, post to Twitter,
 
 
 +Utilized  Ruby on Rails for back server
+
 +Employed  React, Redux, Thunk for front end
+
 +Implemented Websockets for live chat
 
 DEMO http://potato-mate-app.herokuapp.com/
