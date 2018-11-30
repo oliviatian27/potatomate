@@ -9,9 +9,6 @@ import {fetchFriends} from  'actions/action';
 import Divider from '@material-ui/core/Divider';
 
 
-
-
-
 class Friends extends React.Component {
 
   constructor(props) {
@@ -28,101 +25,17 @@ class Friends extends React.Component {
   render(){
     const { friendsList,classes, ...rest } = this.props;
     return (
-
       <div className={classes.container} style={{marginTop:"2%",minHeight:"960px",textAlign:"center",background:"white"}}>
-
       <div style={{paddingTop:"60px"}}>
       {friendsList.length>0?<h1>Congrats!{" "}You have {friendsList.length} matched friends</h1>:<h1>You have 0 friends now,review and get more friends :)</h1>}
       </div>
-
         <GridContainer style={{padding:"50px"}} >
         {friendsList.map(friend=><FriendsItem key={friend.user.id} friend={friend}/>)}
-
          </GridContainer>
       </div>
-
-
-
-
-
     )
   }
 }
 
 
 export default connect(state=>({user:state.user.user,friendsList:state.user.friendsList}),{fetchFriends}) (withStyles(styles)(Friends))
-
-// <GridContainer style={{marginTop:"5%"}} justify="center">
-// <GridItem
-// xs={12}
-// sm={8}
-// md={10}
-// className={classes.gridItem}
-// >
-// <GridContainer>
-// {this.props.friendsList.map(friend=><FriendsItem key={friend.user.id} friend={friend}/>)}
-// </GridContainer>
-// </GridItem>
-// </GridContainer>
-
-
-// <GridItem xs={12} sm={6} md={6} lg={4}>
-//   <div className={classes.rotatingCardContainer}>
-//     <Card background className={classes.cardRotate}>
-//       <div
-//         className={`${classes.front} ${
-//           classes.wrapperBackground
-//         }`}
-//         style={{
-//           backgroundImage: `url(${cardBlog5})`
-//         }}
-//       >
-//         <CardBody background className={classes.cardBodyRotate}>
-//           <h6 className={classes.cardCategoryWhite}>
-//             Full Background Card
-//           </h6>
-//           <a href="#pablo" onClick={e => e.preventDefault()}>
-//             <h3 className={classes.cardTitleWhite}>
-//               This Background Card Will Rotate on Hover
-//             </h3>
-//           </a>
-//           <p className={classes.cardDescriptionWhite}>
-//             Dont be scared of the truth because we need to
-//             restart the human foundation in truth And I love you
-//             like Kanye loves Kanye I love Rick Owens’ bed design
-//             but the back is...
-//           </p>
-//         </CardBody>
-//       </div>
-//       <div
-//         className={`${classes.back} ${
-//           classes.wrapperBackground
-//         }`}
-//         style={{
-//           backgroundImage: `url(${cardBlog5})`
-//         }}
-//       >
-//         <CardBody background className={classes.cardBodyRotate}>
-//           <h5 className={classes.cardTitleWhite}>
-//             Manage Post
-//           </h5>
-//           <p className={classes.cardDescriptionWhite}>
-//             As an Admin, you have shortcuts to edit, view or
-//             delete the posts.
-//           </p>
-//           <div className={classes.textCenter}>
-//             <Button round justIcon color="info">
-//               <Subject />
-//             </Button>
-//             <Button round justIcon color="success">
-//               <Icon>mode_edit</Icon>
-//             </Button>
-//             <Button round justIcon color="danger">
-//               <Delete />
-//             </Button>
-//           </div>
-//         </CardBody>
-//       </div>
-//     </Card>
-//   </div>
-// </GridItem>

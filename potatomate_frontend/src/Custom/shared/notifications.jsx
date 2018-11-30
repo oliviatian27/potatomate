@@ -10,7 +10,6 @@ class Notifications extends React.Component {
 
   render(){
 
-
   return (
     <div >
 

@@ -229,29 +229,9 @@ class SectionNavbars extends React.Component {
                  this.props.notifyNewMessage(res)
                }}
              />}
-
-
-
       </div>
     );
   }
 }
 
 export default connect(({user})=>({user}),{searchItem,fetchCurrentUser,logOutUser,notifyNewMessage})(withStyles(navbarsStyle)(SectionNavbars));
-
-
-// <List >
-// {this.props.user.user&&this.props.user.user.allMessages.map((message,idx)=>(
-// <span key={idx}>
-//   <a href={`/profile/${message.user.id}`}>
-//    <ListItem button>
-//      <ListItemText primary={`${message.user.username}:${message.content}`} />
-//    </ListItem>
-//    <Divider />
-//    </a>
-//  </span>
-// ))}
-//
-//
-//
-//     </List>
