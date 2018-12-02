@@ -28,6 +28,7 @@ class ReviewCard extends React.Component{
     <CardBody
     background
     className={this.props.classes.cardBody}
+    style={{"maxHeight":"280px"}}
     >
 
         <a href={`/${this.props.review.tvmovie.media_type}/${this.props.review.tvmovie.tmdbid}`} >
