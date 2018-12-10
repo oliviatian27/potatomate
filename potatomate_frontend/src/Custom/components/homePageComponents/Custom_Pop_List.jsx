@@ -22,17 +22,7 @@ import Receipt from "@material-ui/icons/Receipt";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
-import CardAvatar from "components/Card/CardAvatar.jsx";
-import Info from "components/Typography/Info.jsx";
-import Danger from "components/Typography/Danger.jsx";
-import Success from "components/Typography/Success.jsx";
-import Warning from "components/Typography/Warning.jsx";
-import Rose from "components/Typography/Rose.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+
 
 import styles from "assets/jss/material-kit-pro-react/views/componentsSections/sectionCards.jsx";
 
